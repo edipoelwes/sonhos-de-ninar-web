@@ -24,12 +24,21 @@ import VectorMap from './views/maps/VectorMap.js'
 import Widgets from './views/Widgets.js'
 import Wizard from './views/forms/Wizard.js'
 
+import Products from './views/pages/Products'
+
 const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
     icon: 'nc-icon nc-bank',
     component: Dashboard,
+    layout: '/admin'
+  },
+  {
+    path: '/products',
+    name: 'Products',
+    icon: 'nc-icon nc-bag-16',
+    component: Products,
     layout: '/admin'
   },
   {
@@ -238,13 +247,6 @@ const routes = [
     name: 'Charts',
     icon: 'nc-icon nc-chart-bar-32',
     component: Charts,
-    layout: '/admin'
-  },
-  {
-    path: '/calendar',
-    name: 'Calendar',
-    icon: 'nc-icon nc-calendar-60',
-    component: Dashboard,
     layout: '/admin'
   }
 ]
