@@ -14,9 +14,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import classnames from "classnames";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import classnames from 'classnames'
+import { NavLink } from 'react-router-dom'
 
 // reactstrap components
 import {
@@ -25,38 +25,41 @@ import {
   Navbar,
   NavItem,
   Nav,
-  Container,
-} from "reactstrap";
+  Container
+} from 'reactstrap'
 
 class AuthNavbar extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       collapseOpen: false,
-      color: "navbar-transparent",
-    };
+      color: 'navbar-transparent'
+    }
   }
-  componentDidMount() {
-    window.addEventListener("resize", this.updateColor);
+
+  componentDidMount () {
+    window.addEventListener('resize', this.updateColor)
   }
+
   // this function opens and closes the collapse on small devices
   // it also adds navbar-transparent class to the navbar when closed
   // ad bg-white when opened
   toggleCollapse = () => {
-    let newState = {
-      collapseOpen: !this.state.collapseOpen,
-    };
-    if (!this.state.collapseOpen) {
-      newState["color"] = "bg-white";
-    } else {
-      newState["color"] = "navbar-transparent";
+    const newState = {
+      collapseOpen: !this.state.collapseOpen
     }
-    this.setState(newState);
+    if (!this.state.collapseOpen) {
+      newState.color = 'bg-white'
+    } else {
+      newState.color = 'navbar-transparent'
+    }
+    this.setState(newState)
   };
-  render() {
+
+  render () {
     return (
       <Navbar
-        className={classnames("navbar-absolute fixed-top", this.state.color)}
+        className={classnames('navbar-absolute fixed-top', this.state.color)}
         expand="lg"
       >
         <Container>
@@ -118,8 +121,8 @@ class AuthNavbar extends React.Component {
           </Collapse>
         </Container>
       </Navbar>
-    );
+    )
   }
 }
 
-export default AuthNavbar;
+export default AuthNavbar
