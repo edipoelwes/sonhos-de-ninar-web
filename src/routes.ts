@@ -1,14 +1,11 @@
 import Buttons from './views/components/Buttons.js'
-import Charts from './views/Charts.js'
-import Dashboard from './views/Dashboard.js'
+import Charts from './views/Charts'
+import Dashboard from './views/Dashboard'
 import ExtendedForms from './views/forms/ExtendedForms.js'
 import ExtendedTables from './views/tables/ExtendedTables.js'
-import FullScreenMap from './views/maps/FullScreenMap.js'
-import GoogleMaps from './views/maps/GoogleMaps.js'
 import GridSystem from './views/components/GridSystem.js'
 import Icons from './views/components/Icons'
 import LockScreen from './views/pages/LockScreen.js'
-import Login from './views/pages/Login.js'
 import Notifications from './views/components/Notifications.js'
 import Panels from './views/components/Panels.js'
 import ReactTables from './views/tables/ReactTables.js'
@@ -20,11 +17,10 @@ import Timeline from './views/pages/Timeline.js'
 import Typography from './views/components/Typography.js'
 import UserProfile from './views/pages/UserProfile.js'
 import ValidationForms from './views/forms/ValidationForms.js'
-import VectorMap from './views/maps/VectorMap.js'
-import Widgets from './views/Widgets.js'
 import Wizard from './views/forms/Wizard.js'
 
 import Products from './views/pages/Products'
+import SignIn from './views/pages/SignIn'
 
 const routes = [
   {
@@ -58,7 +54,7 @@ const routes = [
         path: '/login',
         name: 'Login',
         mini: 'L',
-        component: Login,
+        component: SignIn,
         layout: '/auth'
       },
       {
@@ -205,42 +201,6 @@ const routes = [
         layout: '/admin'
       }
     ]
-  },
-  {
-    collapse: true,
-    name: 'Maps',
-    icon: 'nc-icon nc-pin-3',
-    state: 'mapsCollapse',
-    views: [
-      {
-        path: '/google-maps',
-        name: 'Google Maps',
-        mini: 'GM',
-        component: GoogleMaps,
-        layout: '/admin'
-      },
-      {
-        path: '/full-screen-map',
-        name: 'Full Screen Map',
-        mini: 'FSM',
-        component: FullScreenMap,
-        layout: '/admin'
-      },
-      {
-        path: '/vector-map',
-        name: 'Vector Map',
-        mini: 'VM',
-        component: VectorMap,
-        layout: '/admin'
-      }
-    ]
-  },
-  {
-    path: '/widgets',
-    name: 'Widgets',
-    icon: 'nc-icon nc-box',
-    component: Widgets,
-    layout: '/admin'
   },
   {
     path: '/charts',

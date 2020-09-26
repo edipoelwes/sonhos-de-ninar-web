@@ -4,9 +4,8 @@ import PerfectScrollbar from 'perfect-scrollbar'
 import { Route, Switch } from 'react-router-dom'
 
 import AuthNavbar from '../components/Navbars/AuthNavbar.js'
-import Footer from '../components/Footer/Footer.js'
 
-import routes from '../routes.js'
+import routes from '../routes'
 
 var ps
 
@@ -49,7 +48,7 @@ class Pages extends React.Component {
         <div className="wrapper wrapper-full-page" ref="fullPages">
           <div className="full-page section-image">
             <Switch>{this.getRoutes(routes)}</Switch>
-            <Footer fluid />
+
           </div>
         </div>
       </>

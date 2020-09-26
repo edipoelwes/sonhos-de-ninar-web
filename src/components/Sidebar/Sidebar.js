@@ -145,7 +145,7 @@ class Sidebar extends React.Component {
       >
         <div className="logo">
           <a
-            href="https://www.creative-tim.com"
+            href="#forgot"
             className="simple-text logo-mini"
           >
             <div className="logo-img">
@@ -153,10 +153,10 @@ class Sidebar extends React.Component {
             </div>
           </a>
           <a
-            href="https://www.creative-tim.com"
+            href="#forgot"
             className="simple-text logo-normal"
           >
-            Creative Tim
+            Sonhos de Ninar
           </a>
         </div>
 
@@ -175,7 +175,7 @@ class Sidebar extends React.Component {
                 }
               >
                 <span>
-                  Chet Faker
+                  Edipo Elwes
                   <b className="caret" />
                 </span>
               </a>

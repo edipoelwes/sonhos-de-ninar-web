@@ -1,21 +1,5 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
-import classnames from "classnames";
+import React from 'react'
+import classnames from 'classnames'
 import {
   Button,
   Collapse,
@@ -28,69 +12,74 @@ import {
   InputGroupAddon,
   InputGroupText,
   InputGroup,
-  NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
   Nav,
-  Container,
-} from "reactstrap";
+  Container
+} from 'reactstrap'
 
 class AdminNavbar extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       collapseOpen: false,
-      color: "navbar-transparent",
-    };
+      color: 'navbar-transparent'
+    }
   }
-  componentDidMount() {
-    window.addEventListener("resize", this.updateColor);
+
+  componentDidMount () {
+    window.addEventListener('resize', this.updateColor)
   }
-  componentDidUpdate(e) {
+
+  componentDidUpdate (e) {
     if (
       window.outerWidth < 993 &&
       e.history.location.pathname !== e.location.pathname &&
-      document.documentElement.className.indexOf("nav-open") !== -1
+      document.documentElement.className.indexOf('nav-open') !== -1
     ) {
-      document.documentElement.classList.toggle("nav-open");
+      document.documentElement.classList.toggle('nav-open')
     }
   }
+
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
   updateColor = () => {
     if (window.innerWidth < 993 && this.state.collapseOpen) {
       this.setState({
-        color: "bg-white",
-      });
+        color: 'bg-white'
+      })
     } else {
       this.setState({
-        color: "navbar-transparent",
-      });
+        color: 'navbar-transparent'
+      })
     }
   };
+
   // this function opens and closes the sidebar on small devices
   toggleSidebar = () => {
-    document.documentElement.classList.toggle("nav-open");
+    document.documentElement.classList.toggle('nav-open')
   };
+
   // this function opens and closes the collapse on small devices
   // it also adds navbar-transparent class to the navbar when closed
   // ad bg-white when opened
   toggleCollapse = () => {
-    let newState = {
-      collapseOpen: !this.state.collapseOpen,
-    };
-    if (!this.state.collapseOpen) {
-      newState["color"] = "bg-white";
-    } else {
-      newState["color"] = "navbar-transparent";
+    const newState = {
+      collapseOpen: !this.state.collapseOpen
     }
-    this.setState(newState);
+    if (!this.state.collapseOpen) {
+      newState.color = 'bg-white'
+    } else {
+      newState.color = 'navbar-transparent'
+    }
+    this.setState(newState)
   };
-  render() {
+
+  render () {
     return (
       <>
         <Navbar
-          className={classnames("navbar-absolute fixed-top", this.state.color)}
+          className={classnames('navbar-absolute fixed-top', this.state.color)}
           expand="lg"
         >
           <Container fluid>
@@ -107,8 +96,8 @@ class AdminNavbar extends React.Component {
                 </Button>
               </div>
               <div
-                className={classnames("navbar-toggle", {
-                  toggled: this.state.sidebarOpen,
+                className={classnames('navbar-toggle', {
+                  toggled: this.state.sidebarOpen
                 })}
               >
                 <button
@@ -121,12 +110,6 @@ class AdminNavbar extends React.Component {
                   <span className="navbar-toggler-bar bar3" />
                 </button>
               </div>
-              <NavbarBrand href="#pablo" onClick={(e) => e.preventDefault()}>
-                <span className="d-none d-md-block">
-                  Paper Dashboard PRO React
-                </span>
-                <span className="d-block d-md-none">PD PRO React</span>
-              </NavbarBrand>
             </div>
             <button
               aria-controls="navigation-index"
@@ -226,8 +209,8 @@ class AdminNavbar extends React.Component {
           </Container>
         </Navbar>
       </>
-    );
+    )
   }
 }
 
-export default AdminNavbar;
+export default AdminNavbar
