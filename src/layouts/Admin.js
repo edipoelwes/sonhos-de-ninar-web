@@ -3,7 +3,7 @@ import React from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import { Route, Switch } from 'react-router-dom'
 
-import AdminNavbar from '../components/Navbars/AdminNavbar.js'
+import AdminNavbar from '../components/Navbars/AdminNavbar'
 import Footer from '../components/Footer/Footer.js'
 import Sidebar from '../components/Sidebar/Sidebar.js'
 

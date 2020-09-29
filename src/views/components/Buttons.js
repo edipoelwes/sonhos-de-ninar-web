@@ -1,20 +1,4 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React from 'react'
 
 // reactstrap components
 import {
@@ -28,11 +12,11 @@ import {
   PaginationItem,
   PaginationLink,
   Row,
-  Col,
-} from "reactstrap";
+  Col
+} from 'reactstrap'
 
 class Buttons extends React.Component {
-  render() {
+  render () {
     return (
       <>
         <div className="content">
@@ -83,7 +67,7 @@ class Buttons extends React.Component {
                     Left
                   </Button>
                   <Button color="default">
-                    Right{" "}
+                    Right{' '}
                     <span className="btn-label btn-label-right">
                       <i className="nc-icon nc-minimal-right" />
                     </span>
@@ -348,13 +332,13 @@ class Buttons extends React.Component {
                       </Button>
                     </Col>
                     <Col md="1" sm="1" xs="3">
-                      <p className="category"> </p>
+                      <p className="category"></p>
                       <Button className="btn-icon" color="twitter">
                         <i className="fa fa-twitter" />
                       </Button>
                     </Col>
                     <Col md="1" sm="1" xs="3">
-                      <p className="category"> </p>
+                      <p className="category"></p>
                       <Button className="btn-icon btn-round" color="twitter">
                         <i className="fa fa-twitter" />
                       </Button>
@@ -366,7 +350,7 @@ class Buttons extends React.Component {
                       </Button>
                     </Col>
                     <Col md="3" sm="4">
-                      <p className="category"> </p>
+                      <p className="category"></p>
                       <Button className="btn-neutral" color="twitter">
                         <i className="fa fa-twitter" />
                         Connect with Twitter
@@ -672,8 +656,8 @@ class Buttons extends React.Component {
           </Card>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default Buttons;
+export default Buttons

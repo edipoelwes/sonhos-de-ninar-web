@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {
   Button,
@@ -17,6 +17,10 @@ import {
 } from 'reactstrap'
 
 const SignIn:React.FC = () => {
+  useEffect(() => {
+    document.body.classList.toggle('login-page')
+  })
+
   return (
     <div className="login-page">
       <Container>

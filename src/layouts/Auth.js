@@ -3,7 +3,7 @@ import React from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import { Route, Switch } from 'react-router-dom'
 
-import AuthNavbar from '../components/Navbars/AuthNavbar.js'
+import AuthNavbar from '../components/Navbars/AuthNavbar'
 
 import routes from '../routes'
 
