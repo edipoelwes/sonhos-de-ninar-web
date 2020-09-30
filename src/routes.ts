@@ -12,7 +12,6 @@ import ReactTables from './views/tables/ReactTables.js'
 import Register from './views/pages/Register.js'
 import RegularForms from './views/forms/RegularForms.js'
 import RegularTables from './views/tables/RegularTables.js'
-import SweetAlert from './views/components/SweetAlert.js'
 import Timeline from './views/pages/Timeline.js'
 import Typography from './views/components/Typography.js'
 import UserProfile from './views/pages/UserProfile.js'
@@ -97,13 +96,6 @@ const routes = [
         name: 'Panels',
         mini: 'P',
         component: Panels,
-        layout: '/admin'
-      },
-      {
-        path: '/sweet-alert',
-        name: 'Sweet Alert',
-        mini: 'SA',
-        component: SweetAlert,
         layout: '/admin'
       },
       {

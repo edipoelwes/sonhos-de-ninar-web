@@ -1,5 +1,9 @@
 import React, { FormEvent, useCallback, useState } from 'react'
 
+import { useAuth } from '../../../hooks/AuthContext'
+
+import { sweetAlert } from '../../../utils/sweetAlert'
+
 import {
   Button,
   Card,
@@ -16,8 +20,6 @@ import {
   Row
 } from 'reactstrap'
 
-import { useAuth } from '../../../hooks/AuthContext'
-
 const SignIn:React.FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -33,7 +35,7 @@ const SignIn:React.FC = () => {
           password
         })
       } catch (error) {
-        console.log(error)
+        sweetAlert('E-mail/Password inválido', 'error')
       }
     }, [signIn, email, password]
   )

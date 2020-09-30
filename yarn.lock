@@ -9731,11 +9731,6 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-bootstrap-sweetalert@5.1.11:
-  version "5.1.11"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-sweetalert/-/react-bootstrap-sweetalert-5.1.11.tgz#721e028754e790dfaf1babed9a2a4ead85513425"
-  integrity sha512-cpBfdoZeoJE82ndokAhm+7JwrSLPKg+ZPgmB/3A+zf4pklP4eXHY2LWe2rpJm9w0UsSTeBD2Ve69C5ar0U88hA==
-
 react-bootstrap-switch@15.5.3:
   version "15.5.3"
   resolved "https://registry.yarnpkg.com/react-bootstrap-switch/-/react-bootstrap-switch-15.5.3.tgz#97287791d4ec0d1892d142542e7e5248002b1251"
@@ -11388,6 +11383,16 @@ svgo@^1.0.0, svgo@^1.2.2:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+sweetalert2-react-content@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2-react-content/-/sweetalert2-react-content-3.2.0.tgz#fbbd219177901ef639b8b685c467e35ff8f28770"
+  integrity sha512-Zd75ZZZh7byFHIppsBl04NrIpqQUyjIazBrCb6NwZIDi7Uv7gbvTGO5+yJqgAzjrY29lXOUOyLmY2riKoc69Pg==
+
+sweetalert2@^10.3.5:
+  version "10.3.5"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-10.3.5.tgz#e5a10ad789163e85ec6031a413b08b20e5aae0a4"
+  integrity sha512-8XBQvW2frWVn0Xs80qyraRXcb3Mg/aKG+9sdVPlzViDIYJfLhMeda3pRuyGzyvrPXbBQ3KRjs+66xKH3kz8/og==
 
 symbol-observable@^1.0.4:
   version "1.2.0"
