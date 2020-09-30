@@ -20,7 +20,6 @@ import ValidationForms from './views/forms/ValidationForms.js'
 import Wizard from './views/forms/Wizard.js'
 
 import Products from './views/pages/Products'
-import SignIn from './views/pages/SignIn'
 
 const routes = [
   {
@@ -49,13 +48,6 @@ const routes = [
         mini: 'T',
         component: Timeline,
         layout: '/admin'
-      },
-      {
-        path: '/login',
-        name: 'Login',
-        mini: 'L',
-        component: SignIn,
-        layout: '/auth'
       },
       {
         path: '/register',

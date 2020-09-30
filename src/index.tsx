@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import { createBrowserHistory } from 'history'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 
-import AuthLayout from './layouts/Auth.js'
+// import AuthLayout from './layouts/Auth.js'
+import App from './App'
 import AdminLayout from './layouts/Admin.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -16,7 +17,7 @@ const hist = createBrowserHistory()
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      <Route path="/auth" component={AuthLayout} />
+      <Route path="/" component={App} />
       <Route path="/admin" component={AdminLayout} />
       {/* <Route path="/auth" render={(props: any) => <AuthLayout {...props} />} /> */}
       {/* <Route path="/admin" render={(props: any) => <AdminLayout {...props} />} /> */}

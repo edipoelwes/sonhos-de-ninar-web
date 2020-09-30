@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { FormEvent, useCallback, useState } from 'react'
 
 import {
   Button,
@@ -16,17 +16,34 @@ import {
   Row
 } from 'reactstrap'
 
+import { useAuth } from '../../../hooks/AuthContext'
+
 const SignIn:React.FC = () => {
-  useEffect(() => {
-    document.body.classList.toggle('login-page')
-  })
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const { signIn } = useAuth()
+
+  const handleSubmit = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault()
+      try {
+        await signIn({
+          email,
+          password
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }, [signIn, email, password]
+  )
 
   return (
-    <div className="login-page">
+    <div className="login-page" >
       <Container>
         <Row>
           <Col className="ml-auto mr-auto" lg="4" md="6">
-            <Form action="" className="form" method="">
+            <Form className="form" onSubmit={handleSubmit}>
               <Card className="card-login">
                 <CardHeader>
                   <CardHeader>
@@ -41,9 +58,14 @@ const SignIn:React.FC = () => {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
+                      name="email"
                       placeholder="E-mail"
                       type="text"
                       autoComplete="off"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value)
+                      }}
                     />
                   </InputGroup>
                   <InputGroup>
@@ -53,19 +75,23 @@ const SignIn:React.FC = () => {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
+                      name="password"
                       placeholder="Password"
                       type="password"
                       autoComplete="off"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value)
+                      }}
                     />
                   </InputGroup>
                 </CardBody>
                 <CardFooter>
                   <Button
+                    type="submit"
                     block
                     className="btn-round mb-3"
                     color="danger"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
                   >
                     Entrar
                   </Button>
