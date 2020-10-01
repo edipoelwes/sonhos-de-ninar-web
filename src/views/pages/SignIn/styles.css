@@ -1,0 +1,14 @@
+.register-login-form{
+  color: #000;
+  text-decoration: none !important;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.register-login-form:hover {
+  color: #44c47d;
+}
+
+.register-login-form i {
+  margin-right: 5px;
+}

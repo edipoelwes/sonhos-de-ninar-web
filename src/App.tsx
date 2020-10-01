@@ -1,17 +1,15 @@
 import React from 'react'
-
-import SignIn from './views/pages/SignIn'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { AuthProvider } from './hooks/AuthContext'
+import Routes from './routes'
 
 const App = () => {
   return (
-    <>
-      <div className="full-page section-image">
-        <AuthProvider>
-          <SignIn />
-        </AuthProvider>
-      </div>
-    </>
+    <Router>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
+    </Router>
   )
 }
 

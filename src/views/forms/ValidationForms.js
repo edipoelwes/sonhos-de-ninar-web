@@ -1,20 +1,4 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React from 'react'
 
 // reactstrap components
 import {
@@ -29,248 +13,259 @@ import {
   Form,
   Input,
   Row,
-  Col,
-} from "reactstrap";
+  Col
+} from 'reactstrap'
 
 class ValidationForms extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       // register form
-      registerEmail: "",
-      registerPassword: "",
-      registerConfirmPassword: "",
-      registerEmailState: "",
-      registerPasswordState: "",
-      registerConfirmPasswordState: "",
+      registerEmail: '',
+      registerPassword: '',
+      registerConfirmPassword: '',
+      registerEmailState: '',
+      registerPasswordState: '',
+      registerConfirmPasswordState: '',
       // login form
-      loginFullName: "",
-      loginEmail: "",
-      loginPassword: "",
-      loginFullNameState: "",
-      loginEmailState: "",
-      loginPasswordState: "",
+      loginFullName: '',
+      loginEmail: '',
+      loginPassword: '',
+      loginFullNameState: '',
+      loginEmailState: '',
+      loginPasswordState: '',
       // type validation form
-      required: "",
-      email: "",
-      number: "",
-      url: "",
-      source: "",
-      destination: "",
-      requiredState: "",
-      emailState: "",
-      numberState: "",
-      urlState: "",
-      sourceState: "",
-      destinationState: "",
+      required: '',
+      email: '',
+      number: '',
+      url: '',
+      source: '',
+      destination: '',
+      requiredState: '',
+      emailState: '',
+      numberState: '',
+      urlState: '',
+      sourceState: '',
+      destinationState: '',
       // range validation form
-      minLength: "",
-      maxLength: "",
-      range: "",
-      min: "",
-      max: "",
-      minLengthState: "",
-      maxLengthState: "",
-      rangeState: "",
-      minState: "",
-      maxState: "",
-    };
+      minLength: '',
+      maxLength: '',
+      range: '',
+      min: '',
+      max: '',
+      minLengthState: '',
+      maxLengthState: '',
+      rangeState: '',
+      minState: '',
+      maxState: ''
+    }
   }
+
   // function that returns true if value is email, false otherwise
   verifyEmail = (value) => {
-    var emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     if (emailRex.test(value)) {
-      return true;
+      return true
     }
-    return false;
+    return false
   };
+
   // function that verifies if a string has a given length or not
   verifyLength = (value, length) => {
     if (value.length >= length) {
-      return true;
+      return true
     }
-    return false;
+    return false
   };
+
   // function that verifies if two strings are equal
   compare = (string1, string2) => {
     if (string1 === string2) {
-      return true;
+      return true
     }
-    return false;
+    return false
   };
+
   // function that verifies if value contains only numbers
   verifyNumber = (value) => {
-    var numberRex = new RegExp("^[0-9]+$");
+    var numberRex = new RegExp('^[0-9]+$')
     if (numberRex.test(value)) {
-      return true;
+      return true
     }
-    return false;
+    return false
   };
+
   // verifies if value is a valid URL
   verifyUrl = (value) => {
     try {
-      new URL(value);
-      return true;
+      new URL(value)
+      return true
     } catch (_) {
-      return false;
+      return false
     }
   };
+
   change = (event, stateName, type, stateNameEqualTo, maxValue) => {
     switch (type) {
-      case "email":
+      case 'email':
         if (this.verifyEmail(event.target.value)) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
-      case "password":
+        break
+      case 'password':
         if (this.verifyLength(event.target.value, 1)) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
-      case "equalTo":
+        break
+      case 'equalTo':
         if (this.compare(event.target.value, this.state[stateNameEqualTo])) {
-          this.setState({ [stateName + "State"]: "has-success" });
-          this.setState({ [stateNameEqualTo + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
+          this.setState({ [stateNameEqualTo + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
-          this.setState({ [stateNameEqualTo + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
+          this.setState({ [stateNameEqualTo + 'State']: 'has-danger' })
         }
-        break;
-      case "number":
+        break
+      case 'number':
         if (this.verifyNumber(event.target.value)) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
-      case "length":
+        break
+      case 'length':
         if (this.verifyLength(event.target.value, stateNameEqualTo)) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
-      case "max-length":
+        break
+      case 'max-length':
         if (!this.verifyLength(event.target.value, stateNameEqualTo + 1)) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
-      case "url":
+        break
+      case 'url':
         if (this.verifyUrl(event.target.value)) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
-      case "min-value":
+        break
+      case 'min-value':
         if (
           this.verifyNumber(event.target.value) &&
           event.target.value >= stateNameEqualTo
         ) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
-      case "max-value":
+        break
+      case 'max-value':
         if (
           this.verifyNumber(event.target.value) &&
           event.target.value <= stateNameEqualTo
         ) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
-      case "range":
+        break
+      case 'range':
         if (
           this.verifyNumber(event.target.value) &&
           event.target.value >= stateNameEqualTo &&
           event.target.value <= maxValue
         ) {
-          this.setState({ [stateName + "State"]: "has-success" });
+          this.setState({ [stateName + 'State']: 'has-success' })
         } else {
-          this.setState({ [stateName + "State"]: "has-danger" });
+          this.setState({ [stateName + 'State']: 'has-danger' })
         }
-        break;
+        break
       default:
-        break;
+        break
     }
-    this.setState({ [stateName]: event.target.value });
+    this.setState({ [stateName]: event.target.value })
   };
+
   registerClick = () => {
-    if (this.state.registerEmailState === "") {
-      this.setState({ registerEmailState: "has-danger" });
+    if (this.state.registerEmailState === '') {
+      this.setState({ registerEmailState: 'has-danger' })
     }
     if (
-      this.state.registerPasswordState === "" ||
-      this.state.registerConfirmPasswordState === ""
+      this.state.registerPasswordState === '' ||
+      this.state.registerConfirmPasswordState === ''
     ) {
-      this.setState({ registerPasswordState: "has-danger" });
-      this.setState({ registerConfirmPasswordState: "has-danger" });
+      this.setState({ registerPasswordState: 'has-danger' })
+      this.setState({ registerConfirmPasswordState: 'has-danger' })
     }
   };
+
   loginClick = () => {
-    if (this.state.loginFullNameState === "") {
-      this.setState({ loginFullNameState: "has-danger" });
+    if (this.state.loginFullNameState === '') {
+      this.setState({ loginFullNameState: 'has-danger' })
     }
-    if (this.state.loginEmailState === "") {
-      this.setState({ loginEmailState: "has-danger" });
+    if (this.state.loginEmailState === '') {
+      this.setState({ loginEmailState: 'has-danger' })
     }
-    if (this.state.loginPasswordState === "") {
-      this.setState({ loginPasswordState: "has-danger" });
+    if (this.state.loginPasswordState === '') {
+      this.setState({ loginPasswordState: 'has-danger' })
     }
   };
+
   typeClick = () => {
-    if (this.state.requiredState === "") {
-      this.setState({ requiredState: "has-danger" });
+    if (this.state.requiredState === '') {
+      this.setState({ requiredState: 'has-danger' })
     }
-    if (this.state.emailState === "") {
-      this.setState({ emailState: "has-danger" });
+    if (this.state.emailState === '') {
+      this.setState({ emailState: 'has-danger' })
     }
-    if (this.state.numberState === "") {
-      this.setState({ numberState: "has-danger" });
+    if (this.state.numberState === '') {
+      this.setState({ numberState: 'has-danger' })
     }
-    if (this.state.urlState === "") {
-      this.setState({ urlState: "has-danger" });
+    if (this.state.urlState === '') {
+      this.setState({ urlState: 'has-danger' })
     }
-    if (this.state.sourceState === "" || this.state.destinationState === "") {
-      this.setState({ sourceState: "has-danger" });
-      this.setState({ destinationState: "has-danger" });
+    if (this.state.sourceState === '' || this.state.destinationState === '') {
+      this.setState({ sourceState: 'has-danger' })
+      this.setState({ destinationState: 'has-danger' })
     }
   };
+
   rangeClick = () => {
-    if (this.state.minLengthState === "") {
-      this.setState({ minLengthState: "has-danger" });
+    if (this.state.minLengthState === '') {
+      this.setState({ minLengthState: 'has-danger' })
     }
-    if (this.state.maxLengthState === "") {
-      this.setState({ maxLengthState: "has-danger" });
+    if (this.state.maxLengthState === '') {
+      this.setState({ maxLengthState: 'has-danger' })
     }
-    if (this.state.rangeState === "") {
-      this.setState({ rangeState: "has-danger" });
+    if (this.state.rangeState === '') {
+      this.setState({ rangeState: 'has-danger' })
     }
-    if (this.state.minValueState === "") {
-      this.setState({ minValueState: "has-danger" });
+    if (this.state.minValueState === '') {
+      this.setState({ minValueState: 'has-danger' })
     }
-    if (this.state.maxValueState === "") {
-      this.setState({ maxValueState: "has-danger" });
+    if (this.state.maxValueState === '') {
+      this.setState({ maxValueState: 'has-danger' })
     }
-    if (this.state.minState === "") {
-      this.setState({ minState: "has-danger" });
+    if (this.state.minState === '') {
+      this.setState({ minState: 'has-danger' })
     }
-    if (this.state.maxState === "") {
-      this.setState({ maxState: "has-danger" });
+    if (this.state.maxState === '') {
+      this.setState({ maxState: 'has-danger' })
     }
   };
-  render() {
+
+  render () {
     // taking all the states
-    let {
+    const {
       // register form
       registerEmailState,
       registerPasswordState,
@@ -291,8 +286,8 @@ class ValidationForms extends React.Component {
       maxLengthState,
       rangeState,
       minState,
-      maxState,
-    } = this.state;
+      maxState
+    } = this.state
     return (
       <>
         <div className="content">
@@ -310,10 +305,10 @@ class ValidationForms extends React.Component {
                         name="email"
                         type="email"
                         onChange={(e) =>
-                          this.change(e, "registerEmail", "email")
+                          this.change(e, 'registerEmail', 'email')
                         }
                       />
-                      {this.state.registerEmailState === "has-danger" ? (
+                      {this.state.registerEmailState === 'has-danger' ? (
                         <label className="error">
                           Please enter a valid email address.
                         </label>
@@ -327,10 +322,10 @@ class ValidationForms extends React.Component {
                         type="password"
                         autoComplete="off"
                         onChange={(e) =>
-                          this.change(e, "registerPassword", "password")
+                          this.change(e, 'registerPassword', 'password')
                         }
                       />
-                      {this.state.registerPasswordState === "has-danger" ? (
+                      {this.state.registerPasswordState === 'has-danger' ? (
                         <label className="error">This field is required.</label>
                       ) : null}
                     </FormGroup>
@@ -347,16 +342,16 @@ class ValidationForms extends React.Component {
                         onChange={(e) =>
                           this.change(
                             e,
-                            "registerConfirmPassword",
-                            "equalTo",
-                            "registerPassword"
+                            'registerConfirmPassword',
+                            'equalTo',
+                            'registerPassword'
                           )
                         }
                       />
                       {this.state.registerConfirmPasswordState ===
-                      "has-danger" ? (
-                        <label className="error">This field is required.</label>
-                      ) : null}
+                      'has-danger' ? (
+                          <label className="error">This field is required.</label>
+                        ) : null}
                     </FormGroup>
                     <div className="category form-category">
                       * Required fields
@@ -390,10 +385,10 @@ class ValidationForms extends React.Component {
                         name="fullname"
                         type="text"
                         onChange={(e) =>
-                          this.change(e, "loginFullName", "length", 1)
+                          this.change(e, 'loginFullName', 'length', 1)
                         }
                       />
-                      {this.state.loginFullNameState === "has-danger" ? (
+                      {this.state.loginFullNameState === 'has-danger' ? (
                         <label className="error">This field is required.</label>
                       ) : null}
                     </FormGroup>
@@ -402,9 +397,9 @@ class ValidationForms extends React.Component {
                       <Input
                         name="email"
                         type="email"
-                        onChange={(e) => this.change(e, "loginEmail", "email")}
+                        onChange={(e) => this.change(e, 'loginEmail', 'email')}
                       />
-                      {this.state.loginEmailState === "has-danger" ? (
+                      {this.state.loginEmailState === 'has-danger' ? (
                         <label className="error">
                           Please enter a valid email address.
                         </label>
@@ -417,10 +412,10 @@ class ValidationForms extends React.Component {
                         type="password"
                         autoComplete="off"
                         onChange={(e) =>
-                          this.change(e, "loginPassword", "password")
+                          this.change(e, 'loginPassword', 'password')
                         }
                       />
-                      {this.state.loginPasswordState === "has-danger" ? (
+                      {this.state.loginPasswordState === 'has-danger' ? (
                         <label className="error">This field is required.</label>
                       ) : null}
                     </FormGroup>
@@ -451,10 +446,10 @@ class ValidationForms extends React.Component {
                             name="required"
                             type="text"
                             onChange={(e) =>
-                              this.change(e, "required", "length", 1)
+                              this.change(e, 'required', 'length', 1)
                             }
                           />
-                          {this.state.requiredState === "has-danger" ? (
+                          {this.state.requiredState === 'has-danger' ? (
                             <label className="error">
                               This field is required.
                             </label>
@@ -472,9 +467,9 @@ class ValidationForms extends React.Component {
                           <Input
                             name="email"
                             type="text"
-                            onChange={(e) => this.change(e, "email", "email")}
+                            onChange={(e) => this.change(e, 'email', 'email')}
                           />
-                          {this.state.emailState === "has-danger" ? (
+                          {this.state.emailState === 'has-danger' ? (
                             <label className="error">
                               Please enter a valid email address.
                             </label>
@@ -492,9 +487,9 @@ class ValidationForms extends React.Component {
                           <Input
                             name="number"
                             type="text"
-                            onChange={(e) => this.change(e, "number", "number")}
+                            onChange={(e) => this.change(e, 'number', 'number')}
                           />
-                          {this.state.numberState === "has-danger" ? (
+                          {this.state.numberState === 'has-danger' ? (
                             <label className="error">
                               Please enter a valid number.
                             </label>
@@ -512,9 +507,9 @@ class ValidationForms extends React.Component {
                           <Input
                             name="url"
                             type="text"
-                            onChange={(e) => this.change(e, "url", "url")}
+                            onChange={(e) => this.change(e, 'url', 'url')}
                           />
-                          {this.state.urlState === "has-danger" ? (
+                          {this.state.urlState === 'has-danger' ? (
                             <label className="error">
                               Please enter a valid URL.
                             </label>
@@ -534,7 +529,7 @@ class ValidationForms extends React.Component {
                             placeholder="#idSource"
                             type="text"
                             onChange={(e) =>
-                              this.change(e, "source", "equalTo", "destination")
+                              this.change(e, 'source', 'equalTo', 'destination')
                             }
                           />
                         </FormGroup>
@@ -546,10 +541,10 @@ class ValidationForms extends React.Component {
                             placeholder="#idDestination"
                             type="text"
                             onChange={(e) =>
-                              this.change(e, "destination", "equalTo", "source")
+                              this.change(e, 'destination', 'equalTo', 'source')
                             }
                           />
-                          {this.state.destinationState === "has-danger" ? (
+                          {this.state.destinationState === 'has-danger' ? (
                             <label className="error">
                               Please enter the same value.
                             </label>
@@ -584,10 +579,10 @@ class ValidationForms extends React.Component {
                             name="min_length"
                             type="text"
                             onChange={(e) =>
-                              this.change(e, "minLength", "length", 5)
+                              this.change(e, 'minLength', 'length', 5)
                             }
                           />
-                          {this.state.minLengthState === "has-danger" ? (
+                          {this.state.minLengthState === 'has-danger' ? (
                             <label className="error">
                               Please enter at least 5 characters.
                             </label>
@@ -606,10 +601,10 @@ class ValidationForms extends React.Component {
                             name="max_length"
                             type="text"
                             onChange={(e) =>
-                              this.change(e, "maxLength", "max-length", 5)
+                              this.change(e, 'maxLength', 'max-length', 5)
                             }
                           />
-                          {this.state.maxLengthState === "has-danger" ? (
+                          {this.state.maxLengthState === 'has-danger' ? (
                             <label className="error">
                               Please enter 5 or less characters.
                             </label>
@@ -628,10 +623,10 @@ class ValidationForms extends React.Component {
                             name="range"
                             type="text"
                             onChange={(e) =>
-                              this.change(e, "range", "range", 6, 10)
+                              this.change(e, 'range', 'range', 6, 10)
                             }
                           />
-                          {this.state.rangeState === "has-danger" ? (
+                          {this.state.rangeState === 'has-danger' ? (
                             <label className="error">
                               Please enter a value between 6 and 10.
                             </label>
@@ -650,10 +645,10 @@ class ValidationForms extends React.Component {
                             name="min"
                             type="text"
                             onChange={(e) =>
-                              this.change(e, "min", "min-value", 6)
+                              this.change(e, 'min', 'min-value', 6)
                             }
                           />
-                          {this.state.minState === "has-danger" ? (
+                          {this.state.minState === 'has-danger' ? (
                             <label className="error">
                               Please enter a value greater than or equal to 6.
                             </label>
@@ -672,10 +667,10 @@ class ValidationForms extends React.Component {
                             name="max"
                             type="text"
                             onChange={(e) =>
-                              this.change(e, "max", "max-value", 6)
+                              this.change(e, 'max', 'max-value', 6)
                             }
                           />
-                          {this.state.maxState === "has-danger" ? (
+                          {this.state.maxState === 'has-danger' ? (
                             <label className="error">
                               Please enter a value less than or equal to 6.
                             </label>
@@ -698,8 +693,8 @@ class ValidationForms extends React.Component {
           </Row>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default ValidationForms;
+export default ValidationForms

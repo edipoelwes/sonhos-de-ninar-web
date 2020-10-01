@@ -7,7 +7,7 @@ import AdminNavbar from '../components/Navbars/AdminNavbar'
 import Footer from '../components/Footer/Footer.js'
 import Sidebar from '../components/Sidebar/Sidebar.js'
 
-import routes from '../routes'
+import routes from '../routes/routes'
 
 var ps
 
@@ -93,6 +93,9 @@ class Admin extends React.Component {
         <div className="main-panel" ref="mainPanel">
           <AdminNavbar {...this.props} handleMiniClick={this.handleMiniClick} />
           <Switch>{this.getRoutes(routes)}</Switch>
+
+          {/* <Footer fluid /> */}
+
           {
             // we don't want the Footer to be rendered on full screen maps page
             this.props.location.pathname.indexOf('full-screen-map') !==

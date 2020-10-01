@@ -1,8 +1,10 @@
 import React, { FormEvent, useCallback, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { useAuth } from '../../../hooks/AuthContext'
-
 import { sweetAlert } from '../../../utils/sweetAlert'
+
+import { refreshPage } from '../../../utils/utils'
 
 import {
   Button,
@@ -20,6 +22,8 @@ import {
   Row
 } from 'reactstrap'
 
+import './styles.css'
+
 const SignIn:React.FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -34,10 +38,12 @@ const SignIn:React.FC = () => {
           email,
           password
         })
+        refreshPage()
       } catch (error) {
-        sweetAlert('E-mail/Password inválido', 'error')
+        sweetAlert('E-mail/Password inválido', 'warning')
       }
     }, [signIn, email, password]
+
   )
 
   return (
@@ -62,7 +68,7 @@ const SignIn:React.FC = () => {
                     <Input
                       name="email"
                       placeholder="E-mail"
-                      type="text"
+                      type="email"
                       autoComplete="off"
                       value={email}
                       onChange={(e) => {
@@ -93,13 +99,18 @@ const SignIn:React.FC = () => {
                     type="submit"
                     block
                     className="btn-round mb-3"
-                    color="danger"
+                    color="success"
                   >
                     Entrar
                   </Button>
                 </CardFooter>
+                <Link to="/signup" className="register-login-form">
+                  <i className="nc-icon nc-key-25" />
+                  Criar Conta
+                </Link>
               </Card>
             </Form>
+
           </Col>
         </Row>
       </Container>

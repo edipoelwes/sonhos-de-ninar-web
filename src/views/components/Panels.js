@@ -1,20 +1,4 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React from 'react'
 
 // reactstrap components
 import {
@@ -29,35 +13,37 @@ import {
   TabContent,
   TabPane,
   Row,
-  Col,
-} from "reactstrap";
+  Col
+} from 'reactstrap'
 
 class Panels extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      horizontalTabs: "home",
-      verticalTabs: "info",
-      pageTabs: "homePages",
-      openedCollapses: ["collapseOne", "collapse1"],
-    };
+      horizontalTabs: 'home',
+      verticalTabs: 'info',
+      pageTabs: 'homePages',
+      openedCollapses: ['collapseOne', 'collapse1']
+    }
   }
+
   // with this function we create an array with the opened collapses
   // it is like a toggle function for all collapses from this page
   collapsesToggle = (collapse) => {
-    let openedCollapses = this.state.openedCollapses;
+    const openedCollapses = this.state.openedCollapses
     if (openedCollapses.includes(collapse)) {
       this.setState({
-        openedCollapses: openedCollapses.filter((item) => item !== collapse),
-      });
+        openedCollapses: openedCollapses.filter((item) => item !== collapse)
+      })
     } else {
-      openedCollapses.push(collapse);
+      openedCollapses.push(collapse)
       this.setState({
-        openedCollapses: openedCollapses,
-      });
+        openedCollapses: openedCollapses
+      })
     }
   };
-  render() {
+
+  render () {
     return (
       <>
         <div className="content">
@@ -76,21 +62,21 @@ class Panels extends React.Component {
                       <CardHeader role="tab">
                         <a
                           aria-expanded={this.state.openedCollapses.includes(
-                            "collapseOne"
+                            'collapseOne'
                           )}
                           href="#pablo"
                           data-parent="#accordion"
                           data-toggle="collapse"
-                          onClick={() => this.collapsesToggle("collapseOne")}
+                          onClick={() => this.collapsesToggle('collapseOne')}
                         >
-                          Collapsible Group Item #1{" "}
+                          Collapsible Group Item #1{' '}
                           <i className="nc-icon nc-minimal-down" />
                         </a>
                       </CardHeader>
                       <Collapse
                         role="tabpanel"
                         isOpen={this.state.openedCollapses.includes(
-                          "collapseOne"
+                          'collapseOne'
                         )}
                       >
                         <CardBody>
@@ -113,21 +99,21 @@ class Panels extends React.Component {
                       <CardHeader role="tab">
                         <a
                           aria-expanded={this.state.openedCollapses.includes(
-                            "collapseTwo"
+                            'collapseTwo'
                           )}
                           href="#pablo"
                           data-parent="#accordion"
                           data-toggle="collapse"
-                          onClick={() => this.collapsesToggle("collapseTwo")}
+                          onClick={() => this.collapsesToggle('collapseTwo')}
                         >
-                          Collapsible Group Item #2{" "}
+                          Collapsible Group Item #2{' '}
                           <i className="nc-icon nc-minimal-down" />
                         </a>
                       </CardHeader>
                       <Collapse
                         role="tabpanel"
                         isOpen={this.state.openedCollapses.includes(
-                          "collapseTwo"
+                          'collapseTwo'
                         )}
                       >
                         <CardBody>
@@ -150,21 +136,21 @@ class Panels extends React.Component {
                       <CardHeader role="tab">
                         <a
                           aria-expanded={this.state.openedCollapses.includes(
-                            "collapseThree"
+                            'collapseThree'
                           )}
                           href="#pablo"
                           data-parent="#accordion"
                           data-toggle="collapse"
-                          onClick={() => this.collapsesToggle("collapseThree")}
+                          onClick={() => this.collapsesToggle('collapseThree')}
                         >
-                          Collapsible Group Item #3{" "}
+                          Collapsible Group Item #3{' '}
                           <i className="nc-icon nc-minimal-down" />
                         </a>
                       </CardHeader>
                       <Collapse
                         role="tabpanel"
                         isOpen={this.state.openedCollapses.includes(
-                          "collapseThree"
+                          'collapseThree'
                         )}
                       >
                         <CardBody>
@@ -203,21 +189,21 @@ class Panels extends React.Component {
                       <CardHeader role="tab">
                         <a
                           aria-expanded={this.state.openedCollapses.includes(
-                            "collapse1"
+                            'collapse1'
                           )}
                           href="#pablo"
                           data-parent="#accordion"
                           data-toggle="collapse"
-                          onClick={() => this.collapsesToggle("collapse1")}
+                          onClick={() => this.collapsesToggle('collapse1')}
                         >
-                          Collapsible Group Item #1{" "}
+                          Collapsible Group Item #1{' '}
                           <i className="nc-icon nc-minimal-down" />
                         </a>
                       </CardHeader>
                       <Collapse
                         role="tabpanel"
                         isOpen={this.state.openedCollapses.includes(
-                          "collapse1"
+                          'collapse1'
                         )}
                       >
                         <CardBody>
@@ -240,21 +226,21 @@ class Panels extends React.Component {
                       <CardHeader role="tab">
                         <a
                           aria-expanded={this.state.openedCollapses.includes(
-                            "collapse2"
+                            'collapse2'
                           )}
                           href="#pablo"
                           data-parent="#accordion"
                           data-toggle="collapse"
-                          onClick={() => this.collapsesToggle("collapse2")}
+                          onClick={() => this.collapsesToggle('collapse2')}
                         >
-                          Collapsible Group Item #2{" "}
+                          Collapsible Group Item #2{' '}
                           <i className="nc-icon nc-minimal-down" />
                         </a>
                       </CardHeader>
                       <Collapse
                         role="tabpanel"
                         isOpen={this.state.openedCollapses.includes(
-                          "collapse2"
+                          'collapse2'
                         )}
                       >
                         <CardBody>
@@ -277,21 +263,21 @@ class Panels extends React.Component {
                       <CardHeader role="tab">
                         <a
                           aria-expanded={this.state.openedCollapses.includes(
-                            "collapse3"
+                            'collapse3'
                           )}
                           href="#pablo"
                           data-parent="#accordion"
                           data-toggle="collapse"
-                          onClick={() => this.collapsesToggle("collapse3")}
+                          onClick={() => this.collapsesToggle('collapse3')}
                         >
-                          Collapsible Group Item #3{" "}
+                          Collapsible Group Item #3{' '}
                           <i className="nc-icon nc-minimal-down" />
                         </a>
                       </CardHeader>
                       <Collapse
                         role="tabpanel"
                         isOpen={this.state.openedCollapses.includes(
-                          "collapse3"
+                          'collapse3'
                         )}
                       >
                         <CardBody>
@@ -328,17 +314,17 @@ class Panels extends React.Component {
                       <Nav id="tabs" role="tablist" tabs>
                         <NavItem>
                           <NavLink
-                            aria-expanded={this.state.horizontalTabs === "home"}
+                            aria-expanded={this.state.horizontalTabs === 'home'}
                             data-toggle="tab"
                             href="#pablo"
                             role="tab"
                             className={
-                              this.state.horizontalTabs === "home"
-                                ? "active"
-                                : ""
+                              this.state.horizontalTabs === 'home'
+                                ? 'active'
+                                : ''
                             }
                             onClick={() =>
-                              this.setState({ horizontalTabs: "home" })
+                              this.setState({ horizontalTabs: 'home' })
                             }
                           >
                             Home
@@ -347,18 +333,18 @@ class Panels extends React.Component {
                         <NavItem>
                           <NavLink
                             aria-expanded={
-                              this.state.horizontalTabs === "profile"
+                              this.state.horizontalTabs === 'profile'
                             }
                             data-toggle="tab"
                             href="#pablo"
                             role="tab"
                             className={
-                              this.state.horizontalTabs === "profile"
-                                ? "active"
-                                : ""
+                              this.state.horizontalTabs === 'profile'
+                                ? 'active'
+                                : ''
                             }
                             onClick={() =>
-                              this.setState({ horizontalTabs: "profile" })
+                              this.setState({ horizontalTabs: 'profile' })
                             }
                           >
                             Profile
@@ -367,18 +353,18 @@ class Panels extends React.Component {
                         <NavItem>
                           <NavLink
                             aria-expanded={
-                              this.state.horizontalTabs === "messages"
+                              this.state.horizontalTabs === 'messages'
                             }
                             data-toggle="tab"
                             href="#pablo"
                             role="tab"
                             className={
-                              this.state.horizontalTabs === "messages"
-                                ? "active"
-                                : ""
+                              this.state.horizontalTabs === 'messages'
+                                ? 'active'
+                                : ''
                             }
                             onClick={() =>
-                              this.setState({ horizontalTabs: "messages" })
+                              this.setState({ horizontalTabs: 'messages' })
                             }
                           >
                             Messages
@@ -430,12 +416,12 @@ class Panels extends React.Component {
                                 href="#pablo"
                                 role="tab"
                                 className={
-                                  this.state.verticalTabs === "info"
-                                    ? "active"
-                                    : ""
+                                  this.state.verticalTabs === 'info'
+                                    ? 'active'
+                                    : ''
                                 }
                                 onClick={() =>
-                                  this.setState({ verticalTabs: "info" })
+                                  this.setState({ verticalTabs: 'info' })
                                 }
                               >
                                 Info
@@ -447,12 +433,12 @@ class Panels extends React.Component {
                                 href="#pablo"
                                 role="tab"
                                 className={
-                                  this.state.verticalTabs === "description"
-                                    ? "active"
-                                    : ""
+                                  this.state.verticalTabs === 'description'
+                                    ? 'active'
+                                    : ''
                                 }
                                 onClick={() =>
-                                  this.setState({ verticalTabs: "description" })
+                                  this.setState({ verticalTabs: 'description' })
                                 }
                               >
                                 Description
@@ -464,12 +450,12 @@ class Panels extends React.Component {
                                 href="#pablo"
                                 role="tab"
                                 className={
-                                  this.state.verticalTabs === "concept"
-                                    ? "active"
-                                    : ""
+                                  this.state.verticalTabs === 'concept'
+                                    ? 'active'
+                                    : ''
                                 }
                                 onClick={() =>
-                                  this.setState({ verticalTabs: "concept" })
+                                  this.setState({ verticalTabs: 'concept' })
                                 }
                               >
                                 Concept
@@ -481,12 +467,12 @@ class Panels extends React.Component {
                                 href="#pablo"
                                 role="tab"
                                 className={
-                                  this.state.verticalTabs === "support"
-                                    ? "active"
-                                    : ""
+                                  this.state.verticalTabs === 'support'
+                                    ? 'active'
+                                    : ''
                                 }
                                 onClick={() =>
-                                  this.setState({ verticalTabs: "support" })
+                                  this.setState({ verticalTabs: 'support' })
                                 }
                               >
                                 Support
@@ -498,12 +484,12 @@ class Panels extends React.Component {
                                 href="#pablo"
                                 role="tab"
                                 className={
-                                  this.state.verticalTabs === "extra"
-                                    ? "active"
-                                    : ""
+                                  this.state.verticalTabs === 'extra'
+                                    ? 'active'
+                                    : ''
                                 }
                                 onClick={() =>
-                                  this.setState({ verticalTabs: "extra" })
+                                  this.setState({ verticalTabs: 'extra' })
                                 }
                               >
                                 Extra
@@ -611,9 +597,9 @@ class Panels extends React.Component {
                         href="#pablo"
                         role="tablist"
                         className={
-                          this.state.pageTabs === "homePages" ? "active" : ""
+                          this.state.pageTabs === 'homePages' ? 'active' : ''
                         }
-                        onClick={() => this.setState({ pageTabs: "homePages" })}
+                        onClick={() => this.setState({ pageTabs: 'homePages' })}
                       >
                         <i className="now-ui-icons objects_umbrella-13" />
                         Home
@@ -625,12 +611,12 @@ class Panels extends React.Component {
                         href="#pablo"
                         role="tablist"
                         className={
-                          this.state.pageTabs === "messagesPages"
-                            ? "active"
-                            : ""
+                          this.state.pageTabs === 'messagesPages'
+                            ? 'active'
+                            : ''
                         }
                         onClick={() =>
-                          this.setState({ pageTabs: "messagesPages" })
+                          this.setState({ pageTabs: 'messagesPages' })
                         }
                       >
                         <i className="now-ui-icons shopping_shop" />
@@ -643,12 +629,12 @@ class Panels extends React.Component {
                         href="#pablo"
                         role="tablist"
                         className={
-                          this.state.pageTabs === "settingsPages"
-                            ? "active"
-                            : ""
+                          this.state.pageTabs === 'settingsPages'
+                            ? 'active'
+                            : ''
                         }
                         onClick={() =>
-                          this.setState({ pageTabs: "settingsPages" })
+                          this.setState({ pageTabs: 'settingsPages' })
                         }
                       >
                         <i className="now-ui-icons ui-2_settings-90" />
@@ -691,8 +677,8 @@ class Panels extends React.Component {
           </Row>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default Panels;
+export default Panels

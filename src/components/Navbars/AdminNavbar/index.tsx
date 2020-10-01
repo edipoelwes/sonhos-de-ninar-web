@@ -20,7 +20,7 @@ import {
 } from 'reactstrap'
 
 interface AdminNavbarProps {
-  sidebarOpen: boolean
+  sidebarOpen?: boolean
   handleMiniClick(): void
 }
 
