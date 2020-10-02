@@ -1,0 +1,20 @@
+.register-page {
+  height: 100%;
+  background-color: #312E38;;
+}
+
+.register-login{
+  color: #000;
+  text-decoration: none !important;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register-login:hover {
+  color: #51bcda;
+}
+
+.register-login i {
+  margin-right: 5px;
+}
+

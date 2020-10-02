@@ -40,7 +40,7 @@ const SignIn:React.FC = () => {
         })
         refreshPage()
       } catch (error) {
-        sweetAlert('E-mail/Password inválido', 'warning')
+        sweetAlert('E-mail/Password inválido', 'error')
       }
     }, [signIn, email, password]
 

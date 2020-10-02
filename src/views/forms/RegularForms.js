@@ -1,20 +1,4 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React from 'react'
 
 // reactstrap components
 import {
@@ -30,11 +14,11 @@ import {
   Input,
   FormText,
   Row,
-  Col,
-} from "reactstrap";
+  Col
+} from 'reactstrap'
 
 class RegularForms extends React.Component {
-  render() {
+  render () {
     return (
       <>
         <div className="content">
@@ -62,7 +46,7 @@ class RegularForms extends React.Component {
                       <FormGroup check>
                         <Label check>
                           <Input defaultValue="" type="checkbox" />
-                          Subscribe to newsletter{" "}
+                          Subscribe to newsletter{' '}
                           <span className="form-check-sign" />
                         </Label>
                       </FormGroup>
@@ -243,13 +227,13 @@ class RegularForms extends React.Component {
                             <Input defaultChecked type="checkbox" />
                             <span className="form-check-sign" />a
                           </Label>
-                        </FormGroup>{" "}
+                        </FormGroup>{' '}
                         <FormGroup check inline>
                           <Label check>
                             <Input type="checkbox" />
                             <span className="form-check-sign" />b
                           </Label>
-                        </FormGroup>{" "}
+                        </FormGroup>{' '}
                         <FormGroup check inline>
                           <Label check>
                             <Input type="checkbox" />
@@ -334,7 +318,7 @@ class RegularForms extends React.Component {
                               name="exampleRadios"
                               type="radio"
                             />
-                            Disabled radio is off{" "}
+                            Disabled radio is off{' '}
                             <span className="form-check-sign" />
                           </Label>
                         </div>
@@ -348,7 +332,7 @@ class RegularForms extends React.Component {
                               name="exampleRadioz"
                               type="radio"
                             />
-                            Disabled radio is on{" "}
+                            Disabled radio is on{' '}
                             <span className="form-check-sign" />
                           </Label>
                         </div>
@@ -399,8 +383,8 @@ class RegularForms extends React.Component {
           </Row>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default RegularForms;
+export default RegularForms

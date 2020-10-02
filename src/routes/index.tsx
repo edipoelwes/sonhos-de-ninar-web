@@ -1,8 +1,6 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
 
-// import RoutePrivate from './Route'
-
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
 
