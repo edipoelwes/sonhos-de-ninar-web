@@ -1,5 +1,5 @@
 .register-page {
-  height: 100%;
+  height: 100vh;
   background-color: #312E38;;
 }
 
@@ -17,4 +17,9 @@
 .register-login i {
   margin-right: 5px;
 }
+
+.field-errors {
+  color: #f00;
+}
+
 

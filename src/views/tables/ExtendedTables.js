@@ -517,7 +517,7 @@ class ExtendedTables extends React.Component {
                         <td />
                         <td />
                         <td className="td-number">
-                          <small>€</small>
+                          <small>€RS</small>
                           3,390
                         </td>
                         <td className="td-number">

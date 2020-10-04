@@ -10,10 +10,12 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/yup": "^0.29.7",
     "axios": "^0.20.0",
     "bootstrap": "4.5.0",
     "chart.js": "2.9.3",
     "classnames": "2.2.6",
+    "formik": "^2.1.7",
     "history": "4.10.1",
     "match-sorter": "4.1.0",
     "moment": "2.26.0",
@@ -38,7 +40,8 @@
     "reactstrap": "8.4.1",
     "sweetalert2": "^10.3.5",
     "sweetalert2-react-content": "^3.2.0",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",
