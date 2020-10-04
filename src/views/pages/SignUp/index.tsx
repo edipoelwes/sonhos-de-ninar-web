@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Formik, FormikHelpers, Form, ErrorMessage } from 'formik'
-import registerForm from '../../../rules/schemas/registerForm'
+import { registerForm } from '../../../rules/schemas/schemasValidation'
 import { sweetAlert } from '../../../utils/sweetAlert'
 import api from '../../../services/api'
 
@@ -17,7 +17,8 @@ import {
   Container,
   InputGroup,
   InputGroupAddon,
-  InputGroupText, FormText
+  InputGroupText,
+  FormText
 } from 'reactstrap'
 
 import './styles.css'
@@ -43,17 +44,18 @@ const SignUp: React.FC = () => {
     document_company: '',
     document_company_secondary: ''
   }
-  const handleSubmit = useCallback(async (
-    data: RegisterProps,
-    { setSubmitting }: FormikHelpers<RegisterProps>) => {
-    try {
-      await api.post('/auth/register', data)
-      sweetAlert('Cadastrado com sucesso')
-      history.push('/')
-    } catch {
-      sweetAlert('Erro ao cadastrar', 'error')
-    }
-  }, [history])
+  const handleSubmit = useCallback(
+    async (data: RegisterProps,
+      { setSubmitting }: FormikHelpers<RegisterProps>
+    ) => {
+      try {
+        await api.post('/auth/register', data)
+        sweetAlert('Cadastrado com sucesso')
+        history.push('/')
+      } catch {
+        sweetAlert('Erro ao cadastrar', 'error')
+      }
+    }, [history])
 
   return (
     <div className="register-page">

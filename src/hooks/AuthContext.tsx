@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
 import api from '../services/api'
+import { refreshPage } from '../utils/utils'
 
 interface AuthState {
   token: string
@@ -41,6 +42,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     localStorage.setItem('@SonhosDeNinar:user', JSON.stringify(user))
 
     setData({ token, user })
+
+    refreshPage()
   }, [])
 
   const signOut = useCallback(() => {

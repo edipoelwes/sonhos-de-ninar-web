@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const registerForm = Yup.object().shape({
+export const registerForm = Yup.object().shape({
   name: Yup.string().required('Nome obrigatório!'),
   email: Yup.string()
     .required('E-mail obrigatório!')
@@ -13,4 +13,9 @@ const registerForm = Yup.object().shape({
     .required('Incrição Estadual obrigatório')
 })
 
-export default registerForm
+export const loginForm = Yup.object().shape({
+  email: Yup.string()
+    .required('E-mail obrigatório!')
+    .email('Digite um e-mail válido!'),
+  password: Yup.string().min(6, 'No minimo 6 dígitos!')
+})
