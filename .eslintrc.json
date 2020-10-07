@@ -25,6 +25,7 @@
   "rules": {
     "camelcase": "off",
     "no-use-before-define": "off",
+
     "react-hooks/exhaustive-deps": "off",
     "no-unused-expressions": "off"
   }
