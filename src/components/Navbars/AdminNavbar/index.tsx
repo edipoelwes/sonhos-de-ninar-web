@@ -7,18 +7,14 @@ import {
   DropdownMenu,
   DropdownItem,
   UncontrolledDropdown,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Navbar,
   NavItem,
   NavLink,
   Nav,
   Container
 } from 'reactstrap'
-
+import { FiLogOut } from 'react-icons/fi'
+import { useAuth } from '../../../hooks/AuthContext'
 interface AdminNavbarProps {
   sidebarOpen?: boolean
   handleMiniClick(): void
@@ -27,6 +23,8 @@ interface AdminNavbarProps {
 const AdminNavbar: React.FC<AdminNavbarProps> = ({ handleMiniClick, sidebarOpen }) => {
   const [collapseOpen, setCollapseOpen] = useState(false)
   const [color, setColor] = useState('bg-white')
+
+  const { signOut } = useAuth()
 
   // this function opens and closes the sidebar on small devices
   const toggleSidebar = () => {
@@ -100,29 +98,7 @@ const AdminNavbar: React.FC<AdminNavbarProps> = ({ handleMiniClick, sidebarOpen 
             navbar
             isOpen={collapseOpen}
           >
-            <Form>
-              <InputGroup className="no-border">
-                <Input defaultValue="" placeholder="Search..." type="text" />
-                <InputGroupAddon addonType="append">
-                  <InputGroupText>
-                    <i className="nc-icon nc-zoom-split" />
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
-            </Form>
             <Nav navbar>
-              <NavItem>
-                <NavLink
-                  className="btn-magnify"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <i className="nc-icon nc-layout-11" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </NavLink>
-              </NavItem>
               <UncontrolledDropdown className="btn-rotate" nav>
                 <DropdownToggle
                   aria-haspopup={true}
@@ -165,12 +141,11 @@ const AdminNavbar: React.FC<AdminNavbarProps> = ({ handleMiniClick, sidebarOpen 
               <NavItem>
                 <NavLink
                   className="btn-rotate"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
+                  onClick={() => signOut()}
                 >
-                  <i className="nc-icon nc-settings-gear-65" />
+                  <FiLogOut />
                   <p>
-                    <span className="d-lg-none d-md-block">Account</span>
+                    <span className="d-lg-none d-md-block">logout</span>
                   </p>
                 </NavLink>
               </NavItem>
