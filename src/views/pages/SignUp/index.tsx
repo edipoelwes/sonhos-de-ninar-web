@@ -18,7 +18,7 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
-  FormText
+  FormText,
 } from 'reactstrap'
 
 import './styles.css'
@@ -31,7 +31,7 @@ interface RegisterProps {
   alias_name: string
   document_company: string
   document_company_secondary: string
-};
+}
 
 const SignUp: React.FC = () => {
   const history = useHistory()
@@ -42,11 +42,12 @@ const SignUp: React.FC = () => {
     social_name: '',
     alias_name: '',
     document_company: '',
-    document_company_secondary: ''
+    document_company_secondary: '',
   }
   const handleSubmit = useCallback(
-    async (data: RegisterProps,
-      { setSubmitting }: FormikHelpers<RegisterProps>
+    async (
+      data: RegisterProps,
+      { setSubmitting }: FormikHelpers<RegisterProps>,
     ) => {
       try {
         await api.post('/auth/register', data)
@@ -55,7 +56,9 @@ const SignUp: React.FC = () => {
       } catch {
         sweetAlert('Erro ao cadastrar', 'error')
       }
-    }, [history])
+    },
+    [history],
+  )
 
   return (
     <div className="register-page">
@@ -65,12 +68,10 @@ const SignUp: React.FC = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={registerForm}
-              onSubmit={handleSubmit}>
-              {({
-                values,
-                handleChange
-              }) => (
-                <Form className="form" >
+              onSubmit={handleSubmit}
+            >
+              {({ values, handleChange }) => (
+                <Form className="form">
                   <Card className="card-login mt-3">
                     <CardHeader>
                       <CardHeader>
@@ -78,7 +79,11 @@ const SignUp: React.FC = () => {
                       </CardHeader>
                     </CardHeader>
                     <CardBody>
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="name" />
                       </FormText>
                       <InputGroup>
@@ -97,7 +102,11 @@ const SignUp: React.FC = () => {
                         />
                       </InputGroup>
 
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="email" />
                       </FormText>
                       <InputGroup>
@@ -116,7 +125,11 @@ const SignUp: React.FC = () => {
                         />
                       </InputGroup>
 
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="password" />
                       </FormText>
                       <InputGroup>
@@ -137,7 +150,11 @@ const SignUp: React.FC = () => {
                     </CardBody>
 
                     <CardBody>
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="social_name" />
                       </FormText>
                       <InputGroup>
@@ -156,7 +173,11 @@ const SignUp: React.FC = () => {
                         />
                       </InputGroup>
 
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="alias_name" />
                       </FormText>
                       <InputGroup>
@@ -175,7 +196,11 @@ const SignUp: React.FC = () => {
                         />
                       </InputGroup>
 
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="document_company" />
                       </FormText>
                       <InputGroup>
@@ -194,7 +219,11 @@ const SignUp: React.FC = () => {
                         />
                       </InputGroup>
 
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="document_company_secondary" />
                       </FormText>
                       <InputGroup>
@@ -220,12 +249,12 @@ const SignUp: React.FC = () => {
                         className="btn-round mb-3"
                         color="success"
                       >
-                    Registrar
+                        Registrar
                       </Button>
                     </CardFooter>
                     <Link to="/" className="register-login">
                       <i className="nc-icon nc-lock-circle-open" />
-                  Login
+                      Login
                     </Link>
                   </Card>
                 </Form>
@@ -237,7 +266,7 @@ const SignUp: React.FC = () => {
       <div
         className="full-page-background"
         style={{
-          backgroundImage: `url(${require('../../../assets/img/bg/fabio-mangione.jpg')})`
+          backgroundImage: `url(${require('../../../assets/img/bg/fabio-mangione.jpg')})`,
         }}
       />
     </div>

@@ -19,7 +19,7 @@ import {
   Container,
   Col,
   Row,
-  FormText
+  FormText,
 } from 'reactstrap'
 
 import './styles.css'
@@ -29,30 +29,28 @@ interface LoginProps {
   password: string
 }
 
-const SignIn:React.FC = () => {
+const SignIn: React.FC = () => {
   const initialValues: LoginProps = {
     email: '',
-    password: ''
+    password: '',
   }
 
   const { signIn } = useAuth()
 
   const handleSubmit = useCallback(
-    async (data: LoginProps,
-      { setSubmitting }: FormikHelpers<LoginProps>
-    ) => {
+    async (data: LoginProps, { setSubmitting }: FormikHelpers<LoginProps>) => {
       try {
         await signIn(data)
         // refreshPage()
       } catch (error) {
         sweetAlert('E-mail/Password inválido', 'error')
       }
-    }, [signIn]
-
+    },
+    [signIn],
   )
 
   return (
-    <div className="login-page" >
+    <div className="login-page">
       <Container>
         <Row>
           <Col className="ml-auto mr-auto" lg="4" md="6">
@@ -61,10 +59,7 @@ const SignIn:React.FC = () => {
               validationSchema={loginForm}
               onSubmit={handleSubmit}
             >
-              {({
-                values,
-                handleChange
-              }) => (
+              {({ values, handleChange }) => (
                 <Form className="form">
                   <Card className="card-login">
                     <CardHeader>
@@ -73,7 +68,11 @@ const SignIn:React.FC = () => {
                       </CardHeader>
                     </CardHeader>
                     <CardBody>
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="email" />
                       </FormText>
                       <InputGroup>
@@ -91,7 +90,11 @@ const SignIn:React.FC = () => {
                           onChange={handleChange}
                         />
                       </InputGroup>
-                      <FormText color="default" tag="span" className="field-errors">
+                      <FormText
+                        color="default"
+                        tag="span"
+                        className="field-errors"
+                      >
                         <ErrorMessage name="password" />
                       </FormText>
                       <InputGroup>
@@ -117,25 +120,24 @@ const SignIn:React.FC = () => {
                         className="btn-round mb-3"
                         color="success"
                       >
-                      Entrar
+                        Entrar
                       </Button>
                     </CardFooter>
                     <Link to="/signup" className="register-login-form">
                       <i className="nc-icon nc-key-25" />
-                    Criar Conta
+                      Criar Conta
                     </Link>
                   </Card>
                 </Form>
               )}
             </Formik>
-
           </Col>
         </Row>
       </Container>
       <div
         className="full-page-background"
         style={{
-          backgroundImage: `url(${require('../../../assets/img/bg/fabio-mangione.jpg')})`
+          backgroundImage: `url(${require('../../../assets/img/bg/fabio-mangione.jpg')})`,
         }}
       />
     </div>

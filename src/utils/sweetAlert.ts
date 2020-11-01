@@ -9,31 +9,31 @@ export const sweetAlert = (title: string, icon = 'success') => {
     position: 'top-end',
     showConfirmButton: false,
     timer: 3000,
-    timerProgressBar: true
+    timerProgressBar: true,
   })
 
   switch (icon) {
     case 'error':
       return Toast.fire({
         icon: 'error',
-        title: title
+        title: title,
       })
     case 'warning':
       return Toast.fire({
         icon: 'warning',
-        title: title
+        title: title,
       })
 
     case 'info':
       return Toast.fire({
         icon: 'info',
-        title: title
+        title: title,
       })
 
     default:
       return Toast.fire({
         icon: 'success',
-        title: title
+        title: title,
       })
   }
 }

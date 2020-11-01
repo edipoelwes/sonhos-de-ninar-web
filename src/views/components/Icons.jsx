@@ -12,7 +12,7 @@ const Icons = () => {
             <CardHeader>
               <CardTitle>100 Awesome Nucleo Icons</CardTitle>
               <p className="card-category">
-                  Handcrafted by our friends from{' '}
+                Handcrafted by our friends from{' '}
                 <a href="https://nucleoapp.com/?ref=1712">NucleoApp</a>
               </p>
             </CardHeader>

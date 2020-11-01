@@ -33,7 +33,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('/auth/login', {
       email,
-      password
+      password,
     })
 
     const { token, user } = response.data
@@ -55,12 +55,12 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
-      { children }
+      {children}
     </AuthContext.Provider>
   )
 }
 
-export function useAuth (): AuthContextData {
+export function useAuth(): AuthContextData {
   const context = useContext(AuthContext)
 
   if (!context) {

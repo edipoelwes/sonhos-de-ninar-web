@@ -18,7 +18,7 @@ import Wizard from '../views/forms/Wizard.js'
 import RegularTables from '../views/tables/RegularTables.js'
 
 import ExtendedTables from '../views/tables/ExtendedTables'
-import Products from '../views/pages/Products'
+import Diapers from '../views/pages/Diapers'
 
 const routes = [
   {
@@ -26,14 +26,22 @@ const routes = [
     name: 'Dashboard',
     icon: 'nc-icon nc-bank',
     component: Dashboard,
-    layout: '/admin'
+    layout: '/admin',
   },
   {
-    path: '/products',
+    collapse: true,
     name: 'Products',
     icon: 'nc-icon nc-bag-16',
-    component: Products,
-    layout: '/admin'
+    state: 'productsCollapse',
+    views: [
+      {
+        path: '/diapers',
+        name: 'Fraldas',
+        mini: 'F',
+        component: Diapers,
+        layout: '/admin',
+      },
+    ],
   },
   {
     collapse: true,
@@ -46,30 +54,30 @@ const routes = [
         name: 'Timeline',
         mini: 'T',
         component: Timeline,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/register',
         name: 'Register',
         mini: 'R',
         component: Register,
-        layout: '/auth'
+        layout: '/auth',
       },
       {
         path: '/lock-screen',
         name: 'LockScreen',
         mini: 'LS',
         component: LockScreen,
-        layout: '/auth'
+        layout: '/auth',
       },
       {
         path: '/user-profile',
         name: 'UserProfile',
         mini: 'UP',
         component: UserProfile,
-        layout: '/admin'
-      }
-    ]
+        layout: '/admin',
+      },
+    ],
   },
   {
     collapse: true,
@@ -82,44 +90,44 @@ const routes = [
         name: 'Buttons',
         mini: 'B',
         component: Buttons,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/grid-system',
         name: 'Grid System',
         mini: 'GS',
         component: GridSystem,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/panels',
         name: 'Panels',
         mini: 'P',
         component: Panels,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/notifications',
         name: 'Notifications',
         mini: 'N',
         component: Notifications,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/icons',
         name: 'Icons',
         mini: 'I',
         component: Icons,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/typography',
         name: 'Typography',
         mini: 'T',
         component: Typography,
-        layout: '/admin'
-      }
-    ]
+        layout: '/admin',
+      },
+    ],
   },
   {
     collapse: true,
@@ -132,30 +140,30 @@ const routes = [
         name: 'Regular Forms',
         mini: 'RF',
         component: RegularForms,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/extended-forms',
         name: 'Extended Forms',
         mini: 'EF',
         component: ExtendedForms,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/validation-forms',
         name: 'Validation Forms',
         mini: 'VF',
         component: ValidationForms,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/wizard',
         name: 'Wizard',
         mini: 'W',
         component: Wizard,
-        layout: '/admin'
-      }
-    ]
+        layout: '/admin',
+      },
+    ],
   },
   {
     collapse: true,
@@ -168,31 +176,31 @@ const routes = [
         name: 'Regular Tables',
         mini: 'RT',
         component: RegularTables,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/extended-tables',
         name: 'Extended Tables',
         mini: 'ET',
         component: ExtendedTables,
-        layout: '/admin'
+        layout: '/admin',
       },
       {
         path: '/react-tables',
         name: 'React Tables',
         mini: 'RT',
         component: ReactTables,
-        layout: '/admin'
-      }
-    ]
+        layout: '/admin',
+      },
+    ],
   },
   {
     path: '/charts',
     name: 'Charts',
     icon: 'nc-icon nc-chart-bar-32',
     component: Charts,
-    layout: '/admin'
-  }
+    layout: '/admin',
+  },
 ]
 
 export default routes

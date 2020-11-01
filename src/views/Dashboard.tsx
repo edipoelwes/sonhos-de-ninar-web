@@ -13,13 +13,13 @@ import {
   CardFooter,
   CardTitle,
   Row,
-  Col
+  Col,
 } from 'reactstrap'
 
 import {
   chartExample1,
   chartExample2,
-  chartExample3
+  chartExample3,
 } from '../variables/charts.js'
 
 const Dashboard: React.FC = () => {
@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
                 <hr />
                 <div className="stats">
                   <i className="fa fa-refresh" />
-                    Update Now
+                  Update Now
                 </div>
               </CardFooter>
             </Card>
@@ -76,7 +76,7 @@ const Dashboard: React.FC = () => {
                 <hr />
                 <div className="stats">
                   <i className="fa fa-calendar-o" />
-                    Last day
+                  Last day
                 </div>
               </CardFooter>
             </Card>
@@ -103,7 +103,7 @@ const Dashboard: React.FC = () => {
                 <hr />
                 <div className="stats">
                   <i className="fa fa-clock-o" />
-                    In the last hour
+                  In the last hour
                 </div>
               </CardFooter>
             </Card>
@@ -130,7 +130,7 @@ const Dashboard: React.FC = () => {
                 <hr />
                 <div className="stats">
                   <i className="fa fa-refresh" />
-                    Update now
+                  Update now
                 </div>
               </CardFooter>
             </Card>
@@ -147,7 +147,7 @@ const Dashboard: React.FC = () => {
                   <Col sm="5">
                     <div className="pull-right">
                       <Badge color="success" pill>
-                          +18%
+                        +18%
                       </Badge>
                     </div>
                   </Col>
@@ -155,7 +155,7 @@ const Dashboard: React.FC = () => {
               </CardHeader>
               <CardBody>
                 <h6 className="big-title">
-                    total earnings in last ten quarters
+                  total earnings in last ten quarters
                 </h6>
                 <Line
                   data={chartExample1.data}
@@ -195,7 +195,7 @@ const Dashboard: React.FC = () => {
                   <Col sm="5">
                     <div className="pull-right">
                       <Badge color="danger" pill>
-                          -14%
+                        -14%
                       </Badge>
                     </div>
                   </Col>
@@ -203,7 +203,7 @@ const Dashboard: React.FC = () => {
               </CardHeader>
               <CardBody>
                 <h6 className="big-title">
-                    total subscriptions in last 7 days
+                  total subscriptions in last 7 days
                 </h6>
                 <Line
                   data={chartExample2.data}
@@ -243,7 +243,7 @@ const Dashboard: React.FC = () => {
                   <Col sm="5">
                     <div className="pull-right">
                       <Badge color="warning" pill>
-                          ~51%
+                        ~51%
                       </Badge>
                     </div>
                   </Col>
@@ -280,7 +280,6 @@ const Dashboard: React.FC = () => {
             </Card>
           </Col>
         </Row>
-
       </div>
     </>
   )

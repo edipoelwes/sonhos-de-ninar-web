@@ -10,14 +10,11 @@ import SignUp from '../views/pages/SignUp'
 
 const Routes: React.FC = () => {
   return (
-
     <Switch>
       <PublicRoute path="/" exact component={Auth} />
       <PublicRoute path="/signup" component={SignUp} />
-
       <PrivateRoute path="/admin" component={AdminLayout} />
     </Switch>
-
   )
 }
 
