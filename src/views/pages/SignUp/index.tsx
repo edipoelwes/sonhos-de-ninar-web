@@ -1,15 +1,16 @@
 import React, { useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { Formik, FormikHelpers, Form, ErrorMessage } from 'formik'
+import { Formik, Form, ErrorMessage } from 'formik'
 import { registerForm } from '../../../rules/schemas/schemasValidation'
 import { sweetAlert } from '../../../utils/sweetAlert'
 import api from '../../../services/api'
+
+import Input from '../../components/Input'
 
 import {
   Card,
   CardHeader,
   CardBody,
-  Input,
   Row,
   Col,
   CardFooter,
@@ -47,7 +48,7 @@ const SignUp: React.FC = () => {
   const handleSubmit = useCallback(
     async (
       data: RegisterProps,
-      { setSubmitting }: FormikHelpers<RegisterProps>,
+      // { setSubmitting }: FormikHelpers<RegisterProps>,
     ) => {
       try {
         await api.post('/auth/register', data)
@@ -59,7 +60,6 @@ const SignUp: React.FC = () => {
     },
     [history],
   )
-
   return (
     <div className="register-page">
       <Container>
@@ -96,7 +96,6 @@ const SignUp: React.FC = () => {
                           name="name"
                           placeholder="Nome Completo"
                           type="text"
-                          autoComplete="off"
                           value={values.name}
                           onChange={handleChange}
                         />
@@ -119,7 +118,6 @@ const SignUp: React.FC = () => {
                           name="email"
                           placeholder="E-mail"
                           type="email"
-                          autoComplete="off"
                           value={values.email}
                           onChange={handleChange}
                         />
@@ -142,7 +140,6 @@ const SignUp: React.FC = () => {
                           name="password"
                           placeholder="Password"
                           type="password"
-                          autoComplete="off"
                           value={values.password}
                           onChange={handleChange}
                         />
@@ -167,7 +164,6 @@ const SignUp: React.FC = () => {
                           name="social_name"
                           placeholder="Empresa LTDA"
                           type="text"
-                          autoComplete="off"
                           value={values.social_name}
                           onChange={handleChange}
                         />
@@ -190,7 +186,6 @@ const SignUp: React.FC = () => {
                           name="alias_name"
                           placeholder="Nome Fantasia"
                           type="text"
-                          autoComplete="off"
                           value={values.alias_name}
                           onChange={handleChange}
                         />
@@ -213,7 +208,6 @@ const SignUp: React.FC = () => {
                           name="document_company"
                           placeholder="CNPJ"
                           type="text"
-                          autoComplete="off"
                           value={values.document_company}
                           onChange={handleChange}
                         />

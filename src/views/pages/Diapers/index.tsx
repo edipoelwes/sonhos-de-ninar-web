@@ -42,6 +42,8 @@ const Diapers = () => {
   useEffect(() => {
     loadDiapers()
     dataOptions()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const dataOptions = async (): Promise<OptionsProps[] | void> => {

@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { Formik, FormikHelpers, Form, ErrorMessage } from 'formik'
+import { Formik, Form, ErrorMessage } from 'formik'
 import { useAuth } from '../../../hooks/AuthContext'
 import { sweetAlert } from '../../../utils/sweetAlert'
 import { loginForm } from '../../../rules/schemas/schemasValidation'
-// import { refreshPage } from '../../../utils/utils'
+import Input from '../../components/Input'
 
 import {
   Button,
@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  Input,
   InputGroupAddon,
   InputGroupText,
   InputGroup,
@@ -38,10 +37,9 @@ const SignIn: React.FC = () => {
   const { signIn } = useAuth()
 
   const handleSubmit = useCallback(
-    async (data: LoginProps, { setSubmitting }: FormikHelpers<LoginProps>) => {
+    async (data: LoginProps) => {
       try {
         await signIn(data)
-        // refreshPage()
       } catch (error) {
         sweetAlert('E-mail/Password inválido', 'error')
       }
@@ -82,13 +80,11 @@ const SignIn: React.FC = () => {
                           </InputGroupText>
                         </InputGroupAddon>
                         <Input
+                          type="text"
                           name="email"
                           placeholder="E-mail"
-                          type="text"
-                          autoComplete="off"
                           value={values.email}
-                          onChange={handleChange}
-                        />
+                          onChange={handleChange}/>
                       </InputGroup>
                       <FormText
                         color="default"
@@ -107,7 +103,6 @@ const SignIn: React.FC = () => {
                           name="password"
                           placeholder="Password"
                           type="password"
-                          autoComplete="off"
                           value={values.password}
                           onChange={handleChange}
                         />

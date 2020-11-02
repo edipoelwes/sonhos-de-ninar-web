@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from 'react'
 import api from '../../services/api'
-import Select from '../../components/Select'
+import Select from '../components/Select'
+import Input from '../components/Input'
 import { sweetAlert } from '../../utils/sweetAlert'
 import { moneyMask } from '../../utils/masks'
 import {
@@ -9,8 +10,6 @@ import {
   Container,
   Form,
   FormGroup,
-  Input,
-  Label,
   Modal,
   ModalBody,
   ModalFooter,
@@ -103,27 +102,23 @@ const ModalDiaper: React.FC<ModalProps> = ({
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="name">Produto</Label>
-                  <Input
+                <Input
                     type="text"
                     id="name"
-                    placeholder="Produto"
+                    label="Produto"
                     name="name"
-                    autoComplete="off"
+                    placeholder="Produto"
                     value={name}
-                    onChange={(e) => {
-                      setName(e.target.value)
-                    }}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="name">Preço</Label>
-                  <Input
+                <Input
                     type="text"
-                    id="name"
-                    placeholder="R$ 0,00"
+                    id="price"
+                    label="Preço"
                     name="price"
-                    autoComplete="off"
+                    placeholder="R$ 0,00"
                     value={price}
                     onChange={(e) => {
                       setPrice(moneyMask(e.target.value))
@@ -131,12 +126,12 @@ const ModalDiaper: React.FC<ModalProps> = ({
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="name">Quantidade minima</Label>
-                  <Input
+                <Input
                     type="number"
-                    id="name"
+                    id="min_amount"
+                    label="Qtd. minima"
+                    name="min_amount"
                     placeholder="Quantidade minima"
-                    name="min-amount"
                     value={minAmount}
                     onChange={(e) => {
                       setMinAmount(e.target.value)
