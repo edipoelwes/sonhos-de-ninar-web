@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import api from '../../../services/api'
 import Swal from 'sweetalert2'
 import { sweetAlert } from '../../../utils/sweetAlert'
-import { money_br } from '../../../utils/utils'
-
+import { money_br, numberForString } from '../../../utils/utils'
 import {
   Card,
   CardBody,
@@ -19,7 +18,15 @@ import {
 import ModalDiaper from '../../modals/ModalDiaper'
 import './styles.css'
 
-interface DiapersProps {
+export interface ItensProps {
+  id: string
+  category_id: string
+  name: string
+  price: string
+  amount: string
+  min_amount: string
+}
+export interface DiapersProps {
   id: number
   name: string
   price: number
@@ -27,7 +34,7 @@ interface DiapersProps {
   min_amount: number
 }
 
-interface OptionsProps {
+export interface OptionsProps {
   id: number
   name: string
 }
@@ -36,6 +43,12 @@ const Diapers = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [diapers, setDiapers] = useState<DiapersProps[]>([])
   const [options, setOptions] = useState<OptionsProps[]>([])
+
+  const [id, setId] = useState<number | null>(null)
+  const [category, setCategory] = useState('')
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [minAmount, setMinAmount] = useState('')
 
   const token = localStorage.getItem('@SonhosDeNinar:token')
 
@@ -91,8 +104,19 @@ const Diapers = () => {
     }
   }
 
-  const handleUpdateDiapers = (id: number) => {
-    console.log(`update ${id}`)
+  const handleUpdateForm = async (id: number) => {
+    const response = await api.get(`/products/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    setId(id)
+    setCategory(response.data.category_id)
+    setName(response.data.name)
+    setPrice(numberForString(response.data.price))
+    setMinAmount(response.data.min_amount)
+    setModalOpen(!modalOpen)
   }
 
   return (
@@ -137,6 +161,7 @@ const Diapers = () => {
                         </td>
                         <td className="text-center">
                           <Badge
+                            pill
                             color={
                               diaper.amount > diaper.min_amount + 2
                                 ? 'success'
@@ -149,10 +174,14 @@ const Diapers = () => {
                           </Badge>
                         </td>
                         <td className="text-center">
-                          R$ {money_br(diaper.price.toString())}
-                        </td>
+                            R${' '}
+                            {money_br(diaper.price.toString()).indexOf(',') !==
+                            -1
+                              ? money_br(diaper.price.toString())
+                              : `${money_br(diaper.price.toString())},00`}
+                          </td>
                         <td className="text-center">
-                          <Badge color="primary">{diaper.min_amount}</Badge>
+                          <Badge pill color="primary">{diaper.min_amount}</Badge>
                         </td>
                         <td className="text-center">
                           <Button
@@ -176,7 +205,7 @@ const Diapers = () => {
                             id="tooltip366246651"
                             size="sm"
                             type="button"
-                            onClick={() => handleUpdateDiapers(diaper.id)}
+                            onClick={() => handleUpdateForm(diaper.id)}
                           >
                             <i className="fa fa-edit" />
                           </Button>{' '}
@@ -208,11 +237,21 @@ const Diapers = () => {
                   </tbody>
                 </Table>
                 <ModalDiaper
+                  id={id}
                   modalOpen={modalOpen}
-                  setModalOpen={setModalOpen}
                   diapers={diapers}
-                  setDiapers={setDiapers}
                   options={options}
+                  category={category}
+                  name={name}
+                  price={price}
+                  minAmount={minAmount}
+                  setId={setId}
+                  setCategory={setCategory}
+                  setName={setName}
+                  setPrice={setPrice}
+                  setMinAmount={setMinAmount}
+                  setModalOpen={setModalOpen}
+                  setDiapers={setDiapers}
                 />
               </CardBody>
             </Card>

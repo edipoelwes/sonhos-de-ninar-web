@@ -9,3 +9,7 @@ export const money_br = (value: string) => {
 export const stringForNumber = (value: string) => {
   return parseFloat(value.replace(',', '.')).toFixed(2)
 }
+
+export const numberForString = (value: string) => {
+  return value.replace('.', ',')
+}
