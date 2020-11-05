@@ -57,13 +57,12 @@ const ModalDiaper: React.FC<ModalProps> = ({
   setMinAmount,
 }) => {
 
-  const token = localStorage.getItem('@SonhosDeNinar:token')
   const user = localStorage.getItem('@SonhosDeNinar:user')
 
   const handleCreateDiaper = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (token && user) {
+    if (user) {
       const userData = { user: JSON.parse(user) }
       const data = {
         company_id: userData.user.company_id,
@@ -75,11 +74,7 @@ const ModalDiaper: React.FC<ModalProps> = ({
       }
 
       try {
-        const response = await api.post('/products', data, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        const response = await api.post('/products', data)
         setDiapers([...diapers, response.data])
         setModalOpen(!modalOpen)
         sweetAlert('Cadastrado com sucesso')
@@ -93,7 +88,7 @@ const ModalDiaper: React.FC<ModalProps> = ({
   const handleUpdateDiaper = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (token && user) {
+    if (user) {
       const userData = { user: JSON.parse(user) }
       const data = {
         company_id: userData.user.company_id,
@@ -104,11 +99,7 @@ const ModalDiaper: React.FC<ModalProps> = ({
       }
 
       try {
-        const response = await api.put(`/products/${id}`, data, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        const response = await api.put(`/products/${id}`, data)
 
         console.log(diapers)
         setDiapers(

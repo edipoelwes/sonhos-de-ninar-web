@@ -13,3 +13,14 @@ export const stringForNumber = (value: string) => {
 export const numberForString = (value: string) => {
   return value.replace('.', ',')
 }
+
+export const companyStorage = (): number | null => {
+  const user = localStorage.getItem('@SonhosDeNinar:user')
+  if (user) {
+    const data = JSON.parse(user)
+
+    return data.company_id
+  }
+
+  return null
+}

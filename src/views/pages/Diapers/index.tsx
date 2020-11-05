@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import api from '../../../services/api'
 import Swal from 'sweetalert2'
 import { sweetAlert } from '../../../utils/sweetAlert'
-import { money_br, numberForString } from '../../../utils/utils'
+import { money_br, numberForString, companyStorage } from '../../../utils/utils'
 import {
   Card,
   CardBody,
@@ -50,30 +50,21 @@ const Diapers = () => {
   const [price, setPrice] = useState('')
   const [minAmount, setMinAmount] = useState('')
 
-  const token = localStorage.getItem('@SonhosDeNinar:token')
-
   useEffect(() => {
     loadDiapers()
     dataOptions()
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const dataOptions = async (): Promise<OptionsProps[] | void> => {
-    const response = await api.get('/categories', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    const response = await api.get('/categories')
     setOptions(response.data)
   }
 
   const loadDiapers = async (): Promise<DiapersProps[] | void> => {
-    const response = await api.get('/products', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    const company = companyStorage()
+    const category = 1
+    const response = await api.get(`/products/${company}/${category}`)
     setDiapers(response.data)
   }
 
@@ -89,11 +80,7 @@ const Diapers = () => {
         confirmButtonText: 'Confirm!',
       }).then(async (result) => {
         if (result.isConfirmed) {
-          await api.delete(`/products/${id}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          await api.delete(`/products/${id}`)
 
           loadDiapers()
           sweetAlert('Removido com sucesso.')
@@ -105,11 +92,7 @@ const Diapers = () => {
   }
 
   const handleUpdateForm = async (id: number) => {
-    const response = await api.get(`/products/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    const response = await api.get(`/products/${id}`)
 
     setId(id)
     setCategory(response.data.category_id)
