@@ -20,7 +20,7 @@ import './styles.css'
 
 export interface ItensProps {
   id: string
-  category_id: string
+  category: string
   name: string
   price: string
   amount: string
@@ -28,21 +28,16 @@ export interface ItensProps {
 }
 export interface DiapersProps {
   id: number
+  category: string
   name: string
   price: number
   amount: number
   min_amount: number
 }
 
-export interface OptionsProps {
-  id: number
-  name: string
-}
-
 const Diapers = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [diapers, setDiapers] = useState<DiapersProps[]>([])
-  const [options, setOptions] = useState<OptionsProps[]>([])
 
   const [id, setId] = useState<number | null>(null)
   const [category, setCategory] = useState('')
@@ -52,19 +47,13 @@ const Diapers = () => {
 
   useEffect(() => {
     loadDiapers()
-    dataOptions()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const dataOptions = async (): Promise<OptionsProps[] | void> => {
-    const response = await api.get('/categories')
-    setOptions(response.data)
-  }
 
   const loadDiapers = async (): Promise<DiapersProps[] | void> => {
     const company = companyStorage()
-    const category = 1
-    const response = await api.get(`/products/${company}/${category}`)
+    const response = await api.get(`/products/${company}/fraldas`)
     setDiapers(response.data)
   }
 
@@ -95,7 +84,7 @@ const Diapers = () => {
     const response = await api.get(`/products/${id}`)
 
     setId(id)
-    setCategory(response.data.category_id)
+    setCategory(response.data.category)
     setName(response.data.name)
     setPrice(numberForString(response.data.price))
     setMinAmount(response.data.min_amount)
@@ -223,7 +212,6 @@ const Diapers = () => {
                   id={id}
                   modalOpen={modalOpen}
                   diapers={diapers}
-                  options={options}
                   category={category}
                   name={name}
                   price={price}

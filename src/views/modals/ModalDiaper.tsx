@@ -4,6 +4,8 @@ import Select from '../components/Select'
 import Input from '../components/Input'
 import { sweetAlert } from '../../utils/sweetAlert'
 import { moneyMask } from '../../utils/masks'
+import {companyStorage} from '../../utils/utils'
+import categories from '../../variables/categories'
 import {
   Button,
   Col,
@@ -22,10 +24,6 @@ interface ModalProps {
   id: number | null
   modalOpen: boolean
   diapers: DiapersProps[]
-  options: Array<{
-    id: number
-    name: string
-  }>
   category: string
   name: string
   price: string
@@ -43,7 +41,6 @@ const ModalDiaper: React.FC<ModalProps> = ({
   id,
   modalOpen,
   diapers,
-  options,
   category,
   name,
   price,
@@ -57,60 +54,50 @@ const ModalDiaper: React.FC<ModalProps> = ({
   setMinAmount,
 }) => {
 
-  const user = localStorage.getItem('@SonhosDeNinar:user')
-
   const handleCreateDiaper = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (user) {
-      const userData = { user: JSON.parse(user) }
-      const data = {
-        company_id: userData.user.company_id,
-        category_id: category,
-        name,
-        price,
-        amount: 0,
-        min_amount: minAmount,
-      }
+    const data = {
+      company_id: companyStorage(),
+      category,
+      name,
+      price,
+      amount: 0,
+      min_amount: minAmount,
+    }
 
-      try {
-        const response = await api.post('/products', data)
-        setDiapers([...diapers, response.data])
-        setModalOpen(!modalOpen)
-        sweetAlert('Cadastrado com sucesso')
-      } catch (err) {
-        setModalOpen(!modalOpen)
-        sweetAlert('Erro ao cadastrar', 'error')
-      }
+    try {
+      const response = await api.post('/products', data)
+      setDiapers([...diapers, response.data])
+      setModalOpen(!modalOpen)
+      sweetAlert('Cadastrado com sucesso')
+    } catch (err) {
+      setModalOpen(!modalOpen)
+      sweetAlert('Erro ao cadastrar', 'error')
     }
   }
 
   const handleUpdateDiaper = async (e: FormEvent) => {
     e.preventDefault()
 
-    if (user) {
-      const userData = { user: JSON.parse(user) }
-      const data = {
-        company_id: userData.user.company_id,
-        category_id: category,
-        name,
-        price,
-        min_amount: minAmount,
-      }
+    const data = {
+      company_id:  companyStorage(),
+      category,
+      name,
+      price,
+      min_amount: minAmount,
+    }
 
-      try {
-        const response = await api.put(`/products/${id}`, data)
-
-        console.log(diapers)
-        setDiapers(
-          diapers.map((diaper) => (diaper.id === id ? response.data : diaper)),
-        )
-        handleClose()
-        sweetAlert('Atualizado com sucesso')
-      } catch (err) {
-        handleClose()
-        sweetAlert('Erro ao atualizar', 'error')
-      }
+    try {
+      const response = await api.put(`/products/${id}`, data)
+      setDiapers(
+        diapers.map((diaper) => (diaper.id === id ? response.data : diaper)),
+      )
+      handleClose()
+      sweetAlert('Atualizado com sucesso')
+    } catch (err) {
+      handleClose()
+      sweetAlert('Erro ao atualizar', 'error')
     }
   }
 
@@ -143,7 +130,7 @@ const ModalDiaper: React.FC<ModalProps> = ({
                     onChange={(e) => {
                       setCategory(e.target.value)
                     }}
-                    options={options}
+                    categories={categories}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -191,7 +178,7 @@ const ModalDiaper: React.FC<ModalProps> = ({
                 <Button
                   type="button"
                   className="btn-danger mr-5"
-                  onClick={() => setModalOpen(!modalOpen)}
+                  onClick={handleClose}
                 >
                   fechar
                 </Button>

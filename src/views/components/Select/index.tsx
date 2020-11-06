@@ -1,25 +1,27 @@
 import React, { SelectHTMLAttributes } from 'react'
 import { Label } from 'reactstrap'
 
+export interface CategoyProps {
+  id: string
+  name: string
+}
+
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string
   label: string
-  options: Array<{
-    id: number
-    name: string
-  }>
+  categories: CategoyProps[]
 }
 
-const Select: React.FC<SelectProps> = ({ label, name, options, ...rest }) => {
+const Select: React.FC<SelectProps> = ({ label, name, categories, ...rest }) => {
   return (
     <>
       <Label>{label}</Label>
       <select className="custom-select" name={name} {...rest}>
         <option value="">Selecione uma Categoria</option>
-        {options.map((option) => {
+        {categories.map((category) => {
           return (
-            <option key={option.id} value={option.id}>
-              {option.name}
+            <option key={category.id} value={category.id}>
+              {category.name}
             </option>
           )
         })}
