@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { refreshPage } from './utils'
 
 const MySwal = withReactContent(Swal)
 
@@ -36,4 +37,21 @@ export const sweetAlert = (title: string, icon = 'success') => {
         title: title,
       })
   }
+}
+
+export const sweetAlertToken = () => {
+  localStorage.removeItem('@SonhosDeNinar:token')
+  localStorage.removeItem('@SonhosDeNinar:user')
+
+  Swal.fire({
+    position: 'center',
+    icon: 'error',
+    title: 'Sessão encerrada!',
+    showConfirmButton: false,
+    timer: 3500,
+  })
+
+  setTimeout(() => {
+    refreshPage()
+  }, 500)
 }

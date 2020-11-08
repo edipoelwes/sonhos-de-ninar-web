@@ -162,7 +162,7 @@ const Diapers = () => {
                     ) : diapers.length > 0 ? (
                       diapers.map((diaper) => (
                         <tr key={diaper.id}>
-                          <td className="text-center font-weight-bold">{diaper.id}</td>
+                          <td className="text-center">{diaper.id}</td>
                           <td className="">{diaper.name}</td>
                           <td className="text-center">
                             <Badge
