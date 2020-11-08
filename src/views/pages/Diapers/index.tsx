@@ -15,6 +15,7 @@ import {
   UncontrolledTooltip,
   Badge,
 } from 'reactstrap'
+import Paginate from '../../components/Paginate'
 import ModalDiaper from '../../modals/ModalDiaper'
 import './styles.css'
 
@@ -39,6 +40,11 @@ const Diapers = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [diapers, setDiapers] = useState<DiapersProps[]>([])
 
+  const [loading, setLoading] = useState(false)
+  const [limit, setLimit] = useState(5)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
+
   const [id, setId] = useState<number | null>(null)
   const [category, setCategory] = useState('')
   const [name, setName] = useState('')
@@ -48,13 +54,19 @@ const Diapers = () => {
   useEffect(() => {
     loadDiapers()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [currentPage, limit])
 
 
   const loadDiapers = async (): Promise<DiapersProps[] | void> => {
+    setLoading(true)
     const company = companyStorage()
-    const response = await api.get(`/products/${company}/fraldas`)
-    setDiapers(response.data)
+    const response = await api.get(
+      `/products/${company}/fraldas?page=${currentPage}&limit=${limit}`,
+    )
+    setCurrentPage(response.data.current_page)
+    setTotalPages(response.data.last_page)
+    setDiapers(response.data.data)
+    setLoading(false)
   }
 
   const handleRemoveDiapers = (id: number) => {
@@ -111,6 +123,22 @@ const Diapers = () => {
                 </div>
               </CardHeader>
               <CardBody>
+                <div>
+                  <label className="font-weight-bold mr-2">Total por Página</label>
+                  <select
+                    className="btn btn-primary font-weight-bold mb-2"
+                    onChange={(e) => setLimit(parseInt(e.target.value))}
+                  >
+                    <option className="font-weight-bold" value="5">5</option>
+                    <option className="font-weight-bold" value="10">10</option>
+                    <option className="font-weight-bold" value="15">15</option>
+                    <option className="font-weight-bold" value="20">20</option>
+                    <option className="font-weight-bold" value="25">25</option>
+                    <option className="font-weight-bold" value="30">30</option>
+                    <option className="font-weight-bold" value="40">40</option>
+                    <option className="font-weight-bold" value="50">50</option>
+                  </select>
+                </div>
                 <Table responsive striped>
                   <thead className="text-primary">
                     <tr>
@@ -123,91 +151,109 @@ const Diapers = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {diapers.map((diaper) => (
-                      <tr key={diaper.id}>
-                        <td className="text-center text-danger">
-                          <strong>{diaper.id}</strong>
-                        </td>
-                        <td className="text-primary">
-                          <strong>{diaper.name}</strong>
-                        </td>
-                        <td className="text-center">
-                          <Badge
-                            pill
-                            color={
-                              diaper.amount > diaper.min_amount + 2
-                                ? 'success'
-                                : diaper.amount < diaper.min_amount
-                                ? 'danger'
-                                : 'warning'
-                            }
-                          >
-                            {diaper.amount}
-                          </Badge>
-                        </td>
-                        <td className="text-center">
-                            R${' '}
-                            {money_br(diaper.price.toString()).indexOf(',') !==
-                            -1
-                              ? money_br(diaper.price.toString())
-                              : `${money_br(diaper.price.toString())},00`}
-                          </td>
-                        <td className="text-center">
-                          <Badge pill color="primary">{diaper.min_amount}</Badge>
-                        </td>
-                        <td className="text-center">
-                          <Button
-                            className="btn-icon"
-                            color="info"
-                            id="tooltip264453216"
-                            size="sm"
-                            type="button"
-                          >
-                            <i className="fa fa-user" />
-                          </Button>{' '}
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip264453216"
-                          >
-                            Like
-                          </UncontrolledTooltip>
-                          <Button
-                            className="btn-icon"
-                            color="success"
-                            id="tooltip366246651"
-                            size="sm"
-                            type="button"
-                            onClick={() => handleUpdateForm(diaper.id)}
-                          >
-                            <i className="fa fa-edit" />
-                          </Button>{' '}
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip366246651"
-                          >
-                            Edit
-                          </UncontrolledTooltip>
-                          <Button
-                            className="btn-icon"
-                            color="danger"
-                            id="tooltip476609793"
-                            size="sm"
-                            type="button"
-                            onClick={() => handleRemoveDiapers(diaper.id)}
-                          >
-                            <i className="fa fa-times" />
-                          </Button>{' '}
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip476609793"
-                          >
-                            Delete
-                          </UncontrolledTooltip>
+                    {loading ? (
+                      <tr>
+                        <td colSpan={6} className="text-center text-dark">
+                          <div className="spinner-border" role="status">
+                            <span className="sr-only">Loading...</span>
+                          </div>
                         </td>
                       </tr>
-                    ))}
+                    ) : diapers.length > 0 ? (
+                      diapers.map((diaper) => (
+                        <tr key={diaper.id}>
+                          <td className="text-center font-weight-bold">{diaper.id}</td>
+                          <td className="">{diaper.name}</td>
+                          <td className="text-center">
+                            <Badge
+                              pill
+                              color={
+                                diaper.amount > diaper.min_amount + 2
+                                  ? 'success'
+                                  : diaper.amount < diaper.min_amount
+                                  ? 'danger'
+                                  : 'warning'
+                              }
+                            >
+                              {diaper.amount}
+                            </Badge>
+                          </td>
+                          <td className="text-center">
+                              R${' '}
+                              {money_br(diaper.price.toString()).indexOf(',') !==
+                              -1
+                                ? money_br(diaper.price.toString())
+                                : `${money_br(diaper.price.toString())},00`}
+                            </td>
+                          <td className="text-center">
+                            <Badge pill color="primary">{diaper.min_amount}</Badge>
+                          </td>
+                          <td className="text-center">
+                            <Button
+                              className="btn-icon"
+                              color="info"
+                              id="tooltip264453216"
+                              size="sm"
+                              type="button"
+                            >
+                              <i className="fa fa-user" />
+                            </Button>{' '}
+                            <UncontrolledTooltip
+                              delay={0}
+                              target="tooltip264453216"
+                            >
+                              Like
+                            </UncontrolledTooltip>
+                            <Button
+                              className="btn-icon"
+                              color="success"
+                              id="tooltip366246651"
+                              size="sm"
+                              type="button"
+                              onClick={() => handleUpdateForm(diaper.id)}
+                            >
+                              <i className="fa fa-edit" />
+                            </Button>{' '}
+                            <UncontrolledTooltip
+                              delay={0}
+                              target="tooltip366246651"
+                            >
+                              Edit
+                            </UncontrolledTooltip>
+                            <Button
+                              className="btn-icon"
+                              color="danger"
+                              id="tooltip476609793"
+                              size="sm"
+                              type="button"
+                              onClick={() => handleRemoveDiapers(diaper.id)}
+                            >
+                              <i className="fa fa-times" />
+                            </Button>{' '}
+                            <UncontrolledTooltip
+                              delay={0}
+                              target="tooltip476609793"
+                            >
+                              Delete
+                            </UncontrolledTooltip>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={6} className="text-center text-danger h4">
+                          <strong>Sem registros cadastrados</strong>
+                        </td>
+                      </tr>
+                    )}
                   </tbody>
                 </Table>
+                <Paginate
+                  totalPages={totalPages}
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                />
+
                 <ModalDiaper
                   id={id}
                   modalOpen={modalOpen}
