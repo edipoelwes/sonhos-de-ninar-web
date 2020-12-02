@@ -16,6 +16,7 @@ import RegularTables from '../views/tables/RegularTables.js'
 import ExtendedTables from '../views/tables/ExtendedTables'
 import Diapers from '../views/pages/Diapers'
 import Users from '../views/pages/Users'
+import Customers from '../views/pages/Customers'
 
 const routes = [
   {
@@ -42,7 +43,7 @@ const routes = [
         path: '/clients',
         name: 'Clientes',
         mini: 'C',
-        component: Diapers,
+        component: Customers,
         layout: '/admin',
       },
     ],

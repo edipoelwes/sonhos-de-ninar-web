@@ -119,7 +119,7 @@ const ModalUser: React.FC<ModalProps> = ({
           <Modal toggle={handleClose} isOpen={modalOpen}>
             <div className=" modal-header">
               <h5 className=" modal-title" id="exampleModalLabel">
-                {id === null ? 'Cadastro de usuário' : 'Atualização de usuário'}
+                {id === null ? 'Formulário de cadastro' : 'Formulário de atualização'}
               </h5>
             </div>
             <Form onSubmit={id === null ? handleCreateUser : handleUpdateUser}>
