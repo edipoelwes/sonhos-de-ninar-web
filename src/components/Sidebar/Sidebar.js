@@ -6,6 +6,7 @@ import PerfectScrollbar from 'perfect-scrollbar'
 
 import avatar from '../../assets/img/logo-small.png'
 import logo from '../../assets/img/react-logo.png'
+import { nameStorage } from '../../utils/utils'
 
 var ps
 
@@ -93,6 +94,7 @@ class Sidebar extends React.Component {
           </li>
         )
       }
+
       return (
         <li className={this.activeRoute(prop.layout + prop.path)} key={key}>
           <NavLink to={prop.layout + prop.path} activeClassName="">
@@ -175,7 +177,7 @@ class Sidebar extends React.Component {
                 }
               >
                 <span>
-                  Edipo Elwes
+                  { nameStorage() }
                   <b className="caret" />
                 </span>
               </a>
