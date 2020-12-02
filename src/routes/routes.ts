@@ -4,21 +4,18 @@ import Dashboard from '../views/Dashboard'
 import ExtendedForms from '../views/forms/ExtendedForms.js'
 import GridSystem from '../views/components/GridSystem.js'
 import Icons from '../views/components/Icons'
-import LockScreen from '../views/pages/LockScreen.js'
 import Notifications from '../views/components/Notifications.js'
 import Panels from '../views/components/Panels.js'
 import ReactTables from '../views/tables/ReactTables.js'
-import Register from '../views/pages/Register.js'
 import RegularForms from '../views/forms/RegularForms.js'
-import Timeline from '../views/pages/Timeline.js'
 import Typography from '../views/components/Typography.js'
-import UserProfile from '../views/pages/UserProfile.js'
 import ValidationForms from '../views/forms/ValidationForms.js'
 import Wizard from '../views/forms/Wizard.js'
 import RegularTables from '../views/tables/RegularTables.js'
 
 import ExtendedTables from '../views/tables/ExtendedTables'
 import Diapers from '../views/pages/Diapers'
+import Users from '../views/pages/Users'
 
 const routes = [
   {
@@ -30,7 +27,29 @@ const routes = [
   },
   {
     collapse: true,
-    name: 'Products',
+    name: 'Usuários',
+    icon: 'nc-icon nc-single-02',
+    state: 'usersCollapse',
+    views: [
+      {
+        path: '/users',
+        name: 'Funcionários',
+        mini: 'F',
+        component: Users,
+        layout: '/admin',
+      },
+      {
+        path: '/clients',
+        name: 'Clientes',
+        mini: 'C',
+        component: Diapers,
+        layout: '/admin',
+      },
+    ],
+  },
+  {
+    collapse: true,
+    name: 'Produtos',
     icon: 'nc-icon nc-bag-16',
     state: 'productsCollapse',
     views: [
@@ -43,42 +62,7 @@ const routes = [
       },
     ],
   },
-  {
-    collapse: true,
-    name: 'Pages',
-    icon: 'nc-icon nc-book-bookmark',
-    state: 'pagesCollapse',
-    views: [
-      {
-        path: '/timeline',
-        name: 'Timeline',
-        mini: 'T',
-        component: Timeline,
-        layout: '/admin',
-      },
-      {
-        path: '/register',
-        name: 'Register',
-        mini: 'R',
-        component: Register,
-        layout: '/auth',
-      },
-      {
-        path: '/lock-screen',
-        name: 'LockScreen',
-        mini: 'LS',
-        component: LockScreen,
-        layout: '/auth',
-      },
-      {
-        path: '/user-profile',
-        name: 'UserProfile',
-        mini: 'UP',
-        component: UserProfile,
-        layout: '/admin',
-      },
-    ],
-  },
+
   {
     collapse: true,
     name: 'Components',
