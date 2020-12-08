@@ -17,7 +17,7 @@ const Select: React.FC<SelectProps> = ({ label, name, categories, ...rest }) => 
     <>
       <Label>{label}</Label>
       <select className="custom-select" name={name} {...rest}>
-        <option value="">Selecione uma Categoria</option>
+        <option value="">Selecione um item</option>
         {categories.map((category) => {
           return (
             <option key={category.id} value={category.id}>
