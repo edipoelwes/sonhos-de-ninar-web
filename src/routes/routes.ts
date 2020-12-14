@@ -17,7 +17,8 @@ import ExtendedTables from '../views/tables/ExtendedTables'
 import Diapers from '../views/pages/Diapers'
 import Users from '../views/pages/Users'
 import Customers from '../views/pages/Customers'
-import Shopping from '../views/pages/Shopping'
+import Purchases from '../views/pages/Purchases'
+import InputPurchases from '../views/pages/Purchases/purchases'
 
 const routes = [
   {
@@ -66,22 +67,22 @@ const routes = [
   },
   {
     collapse: true,
-    name: 'Transações',
+    name: 'Compras',
     icon: 'nc-icon nc-cart-simple',
     state: 'transactionCollapse',
     views: [
       {
-        path: '/shopping',
+        path: '/purchases',
         name: 'Compras',
         mini: 'C',
-        component: Shopping,
+        component: Purchases,
         layout: '/admin',
       },
       {
-        path: '/sales',
-        name: 'Vendas',
-        mini: 'V',
-        component: Diapers,
+        path: '/input-purchases',
+        name: 'Entrada',
+        mini: 'E',
+        component: InputPurchases,
         layout: '/admin',
       },
     ],
