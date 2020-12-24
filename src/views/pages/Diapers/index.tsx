@@ -112,33 +112,39 @@ const Diapers = () => {
               <CardHeader>
                 <div className="diapers-header">
                   <CardTitle tag="h4">Fraldas</CardTitle>
-                  <Button
-                    color="primary"
-                    type="button"
-                    onClick={() => setModalOpen(!modalOpen)}
-                  >
-                    <i className="nc-icon nc-simple-add" />
-                    <span className="ml-2">Nova Fralda</span>
-                  </Button>
                 </div>
               </CardHeader>
               <CardBody>
-                <div>
-                  <label className="font-weight-bold mr-2">Total por Página</label>
-                  <select
-                    className="btn btn-primary font-weight-bold mb-2"
-                    onChange={(e) => setLimit(parseInt(e.target.value))}
-                  >
-                    <option className="font-weight-bold" value="5">5</option>
-                    <option className="font-weight-bold" value="10">10</option>
-                    <option className="font-weight-bold" value="15">15</option>
-                    <option className="font-weight-bold" value="20">20</option>
-                    <option className="font-weight-bold" value="25">25</option>
-                    <option className="font-weight-bold" value="30">30</option>
-                    <option className="font-weight-bold" value="40">40</option>
-                    <option className="font-weight-bold" value="50">50</option>
-                  </select>
-                </div>
+                <Row>
+                  <Col md="9">
+                    <div>
+                      <label className="font-weight-bold mr-2">Total por Página</label>
+                      <select
+                        className="btn btn-primary font-weight-bold mb-2"
+                        onChange={(e) => setLimit(parseInt(e.target.value))}
+                      >
+                        <option className="font-weight-bold" value="5">5</option>
+                        <option className="font-weight-bold" value="10">10</option>
+                        <option className="font-weight-bold" value="15">15</option>
+                        <option className="font-weight-bold" value="20">20</option>
+                        <option className="font-weight-bold" value="25">25</option>
+                        <option className="font-weight-bold" value="30">30</option>
+                        <option className="font-weight-bold" value="40">40</option>
+                        <option className="font-weight-bold" value="50">50</option>
+                      </select>
+                    </div>
+                  </Col>
+                  <Col md="3">
+                    <Button
+                      color="primary"
+                      type="button"
+                      onClick={() => setModalOpen(!modalOpen)}
+                    >
+                      <i className="nc-icon nc-simple-add" />
+                      <span className="ml-2">Nova Fralda</span>
+                    </Button>
+                  </Col>
+                </Row>
                 <Table responsive striped>
                   <thead className="text-primary">
                     <tr>
