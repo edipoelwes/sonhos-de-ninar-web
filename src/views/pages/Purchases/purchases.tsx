@@ -12,11 +12,19 @@ import {
   Row,
   Input as Input2
 } from 'reactstrap'
-import api from '../../../services/api';
-import { moneyMask } from '../../../utils/masks';
-import { stringForNumber, numberForString, companyStorage } from '../../../utils/utils';
+import api from '../../../services/api'
+import { moneyMask } from '../../../utils/masks'
+import { sweetAlert } from '../../../utils/sweetAlert'
+import {
+  stringForNumber,
+  numberForString,
+  companyStorage,
+  userIdStorage
+} from '../../../utils/utils'
 
-import Input from '../../components/Input';
+import { useHistory } from 'react-router-dom'
+
+import Input from '../../components/Input'
 
 const Purchases = () => {
   const [paymentMethod, setPaymentMethod] = useState('')
@@ -26,13 +34,16 @@ const Purchases = () => {
   const [total, setTotal] = useState('0,00')
   const [date, setDate] = useState('')
 
+  const history = useHistory()
+
   const [purchases, setPurchases] = useState<Array<{
     id: number
     category: string
     name: string
     price: number}>>()
+
   const [items, setItems] = useState([
-    {id: 0, product: '', total: '', amount: 1},
+    {id: 0, product_id: '', sub_total: '', amount: 1},
   ])
 
   useMemo(async () => {
@@ -48,7 +59,7 @@ const Purchases = () => {
   const addNewItem = () => {
     setItems([
       ...items,
-      {id: items.length, product: '', total: '', amount: 1},
+      {id: items.length, product_id: '', sub_total: '', amount: 1},
     ])
   }
 
@@ -64,26 +75,38 @@ const Purchases = () => {
     setItems(updateItems)
   }
 
-  const handleCreateBuy = (e: FormEvent) => {
+  const handleCreateBuy = async (e: FormEvent) => {
     e.preventDefault()
 
     const data = {
+      company_id: companyStorage(),
+      user_id: userIdStorage(),
       payment_method: paymentMethod,
-      status,
       provider,
-      date,
+      status,
+      due_date: date,
+      total,
       obs,
       items
     }
 
-    console.log(data)
+    try {
+      const response = await api.post('/purchases', data)
 
+      console.log(response.data)
+
+      setPurchases([response.data])
+      history.push('/admin/purchases')
+      sweetAlert('Cadastrado com sucesso')
+    } catch (err) {
+      sweetAlert('Errar ao cadastrar', 'error')
+    }
   }
 
   const handleRemove = (index: number) => {
     items.map(item => {
       if(item.id === index) {
-        let value = parseFloat(stringForNumber(total)) - parseFloat(stringForNumber(item.total))
+        let value = parseFloat(stringForNumber(total)) - parseFloat(stringForNumber(item.sub_total))
         setTotal(value.toFixed(2))
       }
 
@@ -93,7 +116,7 @@ const Purchases = () => {
   }
 
   const handleUpdateTotal = () => {
-    let values = items.map(item => item.total)
+    let values = items.map(item => item.sub_total)
     let prices = values.map(value => parseFloat(stringForNumber(value)))
 
     setTotal(numberForString(prices.reduce((a, b) => a = a + b, 0).toFixed(2).toString()))
@@ -213,19 +236,19 @@ const Purchases = () => {
                           <Label>produto</Label>
                           <select
                             className="custom-select"
-                            value={item.product}
+                            value={item.product_id}
                             onChange={e => {
-                              setItemValue(index, 'product', e.target.value)
+                              setItemValue(index, 'product_id', e.target.value)
                             }}
                           >
                             <option value="">Selecione um item</option>
                             {
-                              purchases?.map((purchase, index) => (
+                              purchases?.map((purchase) => (
                                 <option
                                   value={purchase.id}
                                   key={purchase.id}
                                 >
-                                  {purchase.id} - {purchase.category.toUpperCase()} {purchase.name}
+                                  {purchase.id} - {purchase.category} {purchase.name}
                                 </option>
                               ))
                             }
@@ -247,13 +270,13 @@ const Purchases = () => {
                         <Col md="3">
                           <Input
                             type="text"
-                            id="total"
+                            id="sub_total"
                             label="Total"
                             name="Total"
                             placeholder="R$ ..."
-                            value={item.total}
+                            value={item.sub_total}
                             onChange={e => {
-                              setItemValue(index, "total", moneyMask(e.target.value))
+                              setItemValue(index, "sub_total", moneyMask(e.target.value))
                             }}
                             onKeyUp={handleUpdateTotal}
                           />
